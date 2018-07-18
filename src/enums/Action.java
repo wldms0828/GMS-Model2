@@ -1,0 +1,15 @@
+package enums;
+
+public enum Action {
+	MOVE,
+	DELETE_MEMBER,
+	UPDATE_MEMBER,
+	COUNT_MEMBER,
+	SEARCH_BY_MEMBER_ID,
+	SEARCH_BY_MEMBER_TEAM,
+	MEMBER_LIST,
+	LOGIN,
+	JOIN
+	
+	
+}
