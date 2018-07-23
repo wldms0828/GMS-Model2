@@ -1,31 +1,24 @@
 package controller;
 
 import java.io.*;
-import domain.*;
-import enums.Action;
-import pool.DBConstant;
-import service.MemberServiceImpl;
-import java.util.*;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 import command.Carrier;
-import command.ListCommand;
-import command.SearchTeamCommand;
 import command.Sentry;
+import enums.Action;
+import service.MemberServiceImpl;
 
-@WebServlet("/member.do") // annotation @ , url-mapping
-public class MemberController extends HttpServlet {
+@WebServlet( "/admin.do" )
+public class AdminController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("--MemberController()--");
+		System.out.println("--AdminController()--");
 		Sentry.init(request, response);
 		System.out.println("액션 : " + Sentry.cmd.getAction());
 		
@@ -37,54 +30,32 @@ public class MemberController extends HttpServlet {
 			//request.getRequestDispatcher("/WEB-INF/view/member/" + page + ".jsp").forward(request, response);
 			// DB접근하지 않아도 될 case와
 			break;
-		case JOIN :
-				
-				System.out.println("JOIN");
-				Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
 		
-				
-				// DB접근해야할 case
-			break;
-		case UPDATEMEMBER:
-			System.out.println("UPDATE");
-			Carrier.redirect(request, response, "");
-			
-				break;
-		case DELETEMEMBER:
-			System.out.println("DELETE");
-			Carrier.redirect(request, response, "");
-			break;
-		case MEMBERLIST:
-			System.out.println("--MEMBERLIST--");
-			Carrier.redirect(request, response, "");
-			
-			break;
-		case SEARCHBYNAME :
-			System.out.println("--NAME--");
-			Carrier.redirect(request, response, "");
-			
-			break;
-		case RETRIEVE:
-			System.out.println("--USERID--");
-			Carrier.redirect(request, response, "");
-			break;
-		case COUNTMEMBER:
-			
-			MemberServiceImpl.getInstance().countMember();
-			System.out.println("회원수 : " + MemberServiceImpl.getInstance().countMember());
-			break;
 		case LOGIN:
 			System.out.println("--LOGIN--");
 			if(request.getAttribute("match").equals("TRUE")){
 				Carrier.forward(request, response);
 			}else {
-				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
+				Carrier.redirect(request, response, "/admin.do?action=move&page=main");
 			}
 			break;
+		case MEMBERLIST:
+			System.out.println("--MEMBERLIST--");
+			Carrier.redirect(request, response, "");
+			break;
+		case RETRIEVE:
+			System.out.println("--USERID--");
+			Carrier.redirect(request, response, "");
+			break;	
+		case COUNTMEMBER:
+			
+			MemberServiceImpl.getInstance().countMember();
+			System.out.println("회원수 : " + MemberServiceImpl.getInstance().countMember());
 		default : 
 				Carrier.redirect(request, response, "");
 			break;
 		}
+		
 		
 		/*
 		 * RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp");
@@ -93,5 +64,9 @@ public class MemberController extends HttpServlet {
 		// request.getRequestDispatcher() 의 return 타입은 RequestDispatcher
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 }

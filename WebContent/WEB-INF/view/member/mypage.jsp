@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "domain.*" %>
+    <% 
+	MemberBean user = (MemberBean)request.getAttribute("user");
+%>
+<hi><%=user.getName() %>의 마이페이지 진입</hi>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title>Hello</title>
 	<link rel="stylesheet" href="../../css/style.css" />
+	<style >
+	
+	</style>
 </head>
 <body id = "background">
 

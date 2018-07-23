@@ -11,9 +11,9 @@
 <body>
 <form action="<%=ctx %>/member.do">
 
-<input type="text" name = "USERID" />
+<h3>USERID : <input type="text" name = "USERID" /></h3>
 
-<input type="hidden" name = "action" value = "searchByMemberId" />
+<input type="hidden" name = "action" value = "retrieve" />
 <input type="hidden" name = "page" value = "searchByIdResult" />
 <input type="submit" value = "전송" />
 </form>

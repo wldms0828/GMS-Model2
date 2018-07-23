@@ -1,15 +1,119 @@
-table,th,tr,td{border : 1px solid black;border-collapse: collapse;text-align : center}
+body{font-family: 'Malgun Gothic','Verdana';
+		background-color: #808000;
+		color: #fff;
+		margin: 0;
+		padding: 0; }
+h1,h2,h3,h4,h5,h6{font-size: 1.5em;}
+h1{font-size: 2em;
+	padding-bottom: 0;
+	margin-bottom: 0;}
+div#wrapper{
+	width: 90%;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+div#header{
+	position: relative;
+	margin-bottom:0;
+	padding-bottom: 0;
+	color: #000;
+}
+div#title-box{
+	float: left;
+	text-align: left;
+	display: block;
+}
+div#login-box{
+	float: right;
+	margin: 10px;
+	font-size: 1.1em;
+	display: block;
+	color: #fff;
+}
+div#login-box a:hover{
+	color: gray;
+	text-decoration: none;
+	
+}
+div#login-box a:active{
+	color: #ff0000;
+	text-decoration: red;
+	}
+div#header h1{
+	color: #fff;
+	padding: 5px 0;
+	margin: 0;
+	border: none;
+	line-height: 2em;
+	font-weight: bold;
+	font-size: 32px;
+	}
+div#content{
+	padding: 15px 30px 15px 30px;
+	background-color: #ffffff;
+	margin-bottom: 30px;
+	min-height: 400px;
+}
+div#content-box{
+	clear: both;
+	color : #808000;
+	margin-top: 40px;
+}
+div#menu-box{
+	margin-top: 40px;
+	clear: both;
+}
+ul#menu{
+	text-align: right;
+	margin: 0;
+	border-bottom: 1px #8000ff;
+	position: relative;
+}
+ul#menu li{
+	display: inline;
+	list-style: none;
+	background-color: #408080
+}
+ul#menu li a{
+	padding: 10px 20px;
+	background-color: #ff8000;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 2.8em;
+	color: black;
+}
+ul#menu li a:hover{
+	background-color: #ff80c0;
+	text-decoration: none;
+}
+ul#menu li a:active{
+
+	background-color: #804000;
+	text-decoration: none;
+}
+div#footer{
+	clear: both;
+	color: #fff;
+	text-align: center;
+	margin: 0;
+	padding: 10px 0;
+	line-height: normal;
+	font-size: 1.5em;	
+}
+/* table,th,tr,td{border : 1px solid black;border-collapse: collapse;text-align : center}
 .width-full{width : 100%}
 .height-full{height : 500px}
 .margin-auto{magin : 0 auto}
 .width-30{width : 30% }
-/* main */
+main
 #background{background-color : #ffb3b3; color : black;}
-/* user_login */
+user_login
 #user-login-layout{margin:0 auto;width :250px}
 #user-login-form{border:1px solid black}
 #background{background-color : #ffb3b3; color : black;}
-/*my page*/
+my page
 table,th,tr,td{border : 1px solid black;border-collapse: collapse;text-align : center}
 #background{background-color : #ffb3b3;color : black;}
 .width-full{width : 100%}
@@ -17,4 +121,4 @@ table,th,tr,td{border : 1px solid black;border-collapse: collapse;text-align : c
 .margin-auto{magin : 0 auto}
 .width-30{width : 30% }
 .height-100{height : 100px}
-/* joinForm */
+joinForm */

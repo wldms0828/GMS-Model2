@@ -14,6 +14,7 @@
 	<title>Document</title>
 	<style>
 	.tbl{boarder: 1px solid black}
+	
 	</style>
 </head>
 <body>
