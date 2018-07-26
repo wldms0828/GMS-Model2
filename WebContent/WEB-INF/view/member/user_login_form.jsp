@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	String ctx =application.getContextPath();
-%>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>USER LOGIN</title>
-<link rel="stylesheet" href="../../css/style.css" />
-</head>
 
-<body id = background>
+<html lang="en">
+
+<jsp:include page="../common/head.jsp" />
+
+<body >
 <div id = "user-login-layout">
 <h1>로그인</h1>
-<form id = "user-login-layout" action="<%=ctx %>/member.do" style = "border:1px solid black">
+<form id = "user_login_form" style = "border:1px solid black">
 	ID :
 	<input type="text" name="USERID"  />
 	<br />
@@ -21,8 +16,30 @@
 	<br />
 	<input type="hidden" name = "action" value = "login" />
 	<input type="hidden" name ="page" value="mypage" />
-	<input type="submit" value ="전송"/>
+	<input id="loginFormBtn" type="button" value ="전송"/>
 </form>
 </div>
+	<script>	
+
+	document.getElementById('loginFormBtn').addEventListener('click',function(){
+		var member = new Member();
+		var form = document.getElementById('user_login_form');	
+		form.action = "${ctx}/member.do";
+		form.method = "post";
+		var USERID = form.USERID.value;
+		var PASSWORD = form.PASSWORD.value;
+		alert('입력한 ID : '+USERID);
+		alert('입력한 pass : '+PASSWORD);
+		member.setUserId(USERID);
+		member.setPassword(PASSWORD);
+		if(member.loginValidation()){
+			form.submit();
+		}
+
+		
+		
+	});
+	
+	</script>
 </body>
 </html>

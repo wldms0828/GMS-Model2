@@ -64,9 +64,5 @@ public class AdminController extends HttpServlet{
 		// request.getRequestDispatcher() 의 return 타입은 RequestDispatcher
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
 
 }

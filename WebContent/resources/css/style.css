@@ -33,7 +33,7 @@ div#login-box{
 	color: #fff;
 }
 div#login-box a:hover{
-	color: gray;
+	color: #ff0080;
 	text-decoration: none;
 	
 }
@@ -52,7 +52,7 @@ div#header h1{
 	}
 div#content{
 	padding: 15px 30px 15px 30px;
-	background-color: #ffffff;
+	background-color: #fff;
 	margin-bottom: 30px;
 	min-height: 400px;
 }
