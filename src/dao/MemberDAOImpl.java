@@ -18,7 +18,16 @@ public class MemberDAOImpl implements MemberDAO {
 	public void insertMemberBean(MemberBean member) {
 		try {
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-			.getConnection().createStatement().executeUpdate(String.format(MemberQuery.INSERT_MEMBER.toString(),member.getUserId(),member.getName(),member.getSsn(),member.getPassword()));
+			.getConnection().createStatement().executeUpdate(
+					String.format(MemberQuery.INSERT_MEMBER.toString()
+							,member.getUserId()
+							,member.getName()
+							,member.getSsn()
+							,member.getPassword()
+							,member.getGender()
+							,member.getAge()
+							,member.getRoll()
+							,member.getTeamId()));
 			
 		} catch (Exception e) {
 		
@@ -97,6 +106,8 @@ public class MemberDAOImpl implements MemberDAO {
 				mem.setTeamId(rs.getString("TEAMID"));
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setAge(rs.getString("AGE"));
 				
 			}
 		} catch (Exception e) {
@@ -134,7 +145,7 @@ public class MemberDAOImpl implements MemberDAO {
 			.getConnection()
 			.createStatement()
 			.executeUpdate(
-					String.format(MemberQuery.UPDATE_MEMBER.toString(), member.getPassword().split("/")[1], member.getUserId(), member.getPassword().split("/")[0])
+					String.format(MemberQuery.UPDATE_MEMBER.toString(), member.getPassword().split("/")[1],member.getTeamId(),member.getRoll(), member.getUserId(), member.getPassword().split("/")[0])
 					);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

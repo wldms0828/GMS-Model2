@@ -2,10 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
-</head>
+<jsp:include page="../common/head.jsp" />
 <body>
 <form action="${ctx}/member.do">
 

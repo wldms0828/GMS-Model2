@@ -102,6 +102,23 @@ div#footer{
 	line-height: normal;
 	font-size: 1.5em;	
 }
+table#mypage{
+    border: 1px solid black ;
+    width: 800px;
+    height: 100px;
+    text-align: center;
+}
+table#mypage th td{
+    border: 1px solid black ;
+        text-align: center;
+}
+table#mypage tr td{
+    border: 1px solid black ;
+        text-align: center;
+}
+update#updateConfirmBtn {
+	text-align: center;
+}
 /* table,th,tr,td{border : 1px solid black;border-collapse: collapse;text-align : center}
 .width-full{width : 100%}
 .height-full{height : 500px}

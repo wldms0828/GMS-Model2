@@ -2,10 +2,7 @@
 	%>
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>팀명으로 검색하기</title>
-</head>
+<jsp:include page="../common/head.jsp" />
 	<body>
 		<form action="${ctx}/member.do" >
 		TEAMID : <br />

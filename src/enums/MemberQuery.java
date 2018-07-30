@@ -7,24 +7,36 @@ public enum MemberQuery {
 		String query = "";
 		switch (this) {
 		case LOGIN:
-			query = " SELECT MEM_ID  " + ", TEAM_ID   " + ", NAME  " + ", SSN  " + ", PASSWORD   " + "FROM MEMBER "
+			query = " SELECT MEM_ID  " +
+						", TEAM_ID   " +
+						", NAME  " +
+						", SSN  " +
+						", PASSWORD   " 
+						+ "FROM MEMBER "
 					+ " WHERE MEM_ID LIKE '%s' " + " AND PASSWORD LIKE '%s' ";
 			break;
-		case INSERT_MEMBER:
-			query = "INSERT INTO MEMBER( MEM_ID, NAME , SSN,  PASSWORD) VALUES ('%s','%s','%s','%s')";
+	case INSERT_MEMBER:
+			query = "INSERT INTO MEMBER( MEM_ID,"
+					+ " NAME , "
+					+ " SSN, "
+					+ " PASSWORD, "
+					+ " GENDER, "
+					+ " AGE, "
+					+ " ROLL,"
+					+ " TEAM_ID) "
+					+ " VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')";
 			break;
-		case JOIN:
-			query = "SELECT MEM_ID USERID," + " NAME " + ",SSN " + ",PASSWORD " + "FROM MEMBER "
-					+ "WHERE MEM_ID LIKE '%s'" + " AND PASSWORD LIKE '%s' " + "AND SSN LIKE '%s' "
-					+ "AND NAME LIKE '%s'";
-			break;
+		
 		case COUNT_MEMBER:	
 			query = "SELECT COUNT(*) AS count FROM MEMBER ";
 			break;
 		case UPDATE_MEMBER:
-			query = "UPDATE MEMBER SET PASSWORD = '%s'" + 
-					" WHERE MEM_ID LIKE '%s'"
-					+" AND PASSWORD LIKE '%s'";
+			query = "UPDATE MEMBER SET PASSWORD = '%s', "
+					+ "	TEAM_ID ='%s', "
+					+ "	ROLL='%s'" + 
+					"	WHERE MEM_ID LIKE '%s'" + 
+					"	AND PASSWORD LIKE '%s'";
+              ;
 			break;
 		case DELETE_MEMBER:
 			query = "DELETE FROM MEMBER " + 
@@ -58,7 +70,9 @@ public enum MemberQuery {
 					"    NAME," + 
 					"    SSN," + 
 					"    ROLL," + 
-					"    PASSWORD" + 
+					"    PASSWORD,"
+					+ " GENDER,"
+					+ " AGE" + 
 					" FROM MEMBER" + 
 					" WHERE MEM_ID LIKE '%s'";
 			

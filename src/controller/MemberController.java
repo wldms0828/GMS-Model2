@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
@@ -74,14 +75,22 @@ public class MemberController extends HttpServlet {
 			System.out.println("회원수 : " + MemberServiceImpl.getInstance().countMember());
 			break;
 		case LOGIN:
-			System.out.println("=========에러났다===========");
-			/*System.out.println("--LOGIN--");
+			System.out.println("--LOGIN--");
 			if(request.getAttribute("match").equals("TRUE")){
+				/*HttpSession s =*/
+				request.getSession().
+					setAttribute("user", request.getAttribute("user"));
+				System.out.println(request.getAttribute("user"));
+				//servlet(interface)과 JSP(interface) 을 구현한 container이기 때문에 
+				//MemberController 에 끌고 나와서 선언해준다
+//				Sentry.cmd.setPage("mypage");
+//				Sentry.cmd.execute();
 				Carrier.forward(request, response);
-			}else {
+
+				}else {
 				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 			}
-			break;*/
+			break;
 		default : 
 				Carrier.redirect(request, response, "");
 			break;

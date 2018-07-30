@@ -1,40 +1,101 @@
-function Common() {
-		this.move = function(t,domain, action, page){
-			location.href = t+"/" + domain + ".do?action="
-		+ action + "&page=" + page;}
-}
-;
-
-function Member() {
-		var userId, ssn,password; 
-		this.setUserId = function(x){
-			this.userId=x;
-		}
-		this.setSsn = function(x){
-			this.ssn=x;
-		}
-		this.setPassword = function(x){
-			this.password=x;
-		}
-		this.getUserId = function(){
-			return this.userId;
-		}
-		this.getSsn = function(){
-			return this.ssn;
-		}
-		this.getPassword = function(){
-			return this.password;
-		}
-	
-		this.loginValidation = function() {
-			
-			if(this.userId === ""){
-					alert("아이디를 입력하세요.");
-					return false;
-				}else if(this.password === ""){
-					alert("비밀번호를 입력하세요.");
-					return false;
+/*var mem = (function(){}());*/
+"use strict";
+var router = (()=>{
+	return {move :x=>{
+			location.href =
+				x.ctx+"/" + x.domain + ".do?action="
+		+ x.action + "&page=" + x.page}
+		}; // closure 
+})();
+//실행하는 함수는  세미콜론을 꼭 붙여줘야 한다. 노드의 single threaded model이다.
+var service = (()=>{
+	return{
+		nullChecker : x=>{
+			var i = 0;
+			var json = {
+				checker : false,
+				text : "빈칸을 입력하세요"
+			};
+			for(i in x){
+				if(x[i]===""){
+					json.checker = false;
+					break;
 				}else{
-					return true;
-				}}
+					json.checker = true;
+				}
+			}
+			return json;
+		}
+		
+	
+	}
+	
+//	return {
+//		joinValidation : x=>{
+//			if(x.getUserId()===""){
+//				alert("아이디를 입력하세요.");
+//				return false;
+//			}else if(x.getPassword()===""){
+//				alert("비밀번호를 입력하세요.");
+//				return false;
+//			}else if(x.getName()===""){
+//				alert("이름을 입력하세요.");
+//				return false;
+//			}else if(x.getSsn()===""){
+//				alert("나이를 입력하세요.");
+//				return false;
+//			}else{
+//				return true;
+//			}
+//			return false;
+//		} 		
+//	};
+})();
+//userId, ssn, name, roll, teamId,password,gender;
+var member = (()=>{
+	var _userId, _age,_password,_name,_gender; 
+	var setUserId = (userId)=>{this._userId=userId;}
+	var setPassword = (password)=>{this._password=password;}
+	var setName = (name)=>{this._name=name;}
+	var setSsn = (ssn)=>{this.ssn=ssn;}
+	var setAge = x=>{
+		this._age = 119-x.substring(0,2);}
+	var setGender = x=>{
+		 gd = x.charAt(7);
+		if(gd==='1'||gd==='3'){
+			gender = "남";
+			}else if(gd==='2'||gd==='4'){
+			gender = "여";
+			}else if(gd==='5'||gd==='6'){
+			gender = "외국인";
+			}else{
+			gender = "다시 입력하세요";
+			}
+		this._gender = gender;
+		}
+	var getGender = ()=>{return this._gender;}
+	var getUserId = ()=>{return this._userId;}
+	var getPassword = ()=>{return this._password;}
+	var getName = ()=>{return this._name;}
+	var getAge = ()=>{return this._age;}
+	var getSsn = ()=>{return this._ssn;}
+	var getGender = ()=>{return this._gender;}
+	return {
+		setUserId : setUserId,
+		setPassword :setPassword,
+		setName :setName,
+		setAge:setAge,
+		setGender :setGender,
+		getUserId:getUserId,
+		getAge:getAge,
+		getSsn:getSsn,
+		getPassword:getPassword,
+		getName:getName,
+		getGender:getGender,
+		join : x=>{
+			member.setAge(x);
+			member.setGender(x);
+		}			
+		
 	};
+})();

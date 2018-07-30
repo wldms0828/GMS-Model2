@@ -12,22 +12,23 @@ public class UpdateCommand extends Command{
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
 		setPage(request.getParameter("page"));
+		execute();
 	}
 	@Override
 	public void execute() {
 		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("비번변경입장");
-			String userId = request.getParameter("USERID");
-			String pass = request.getParameter("PASSWORD")+
-					"/"+
-					request.getParameter("NEWPASSWORD");
-			System.out.println("비밀번호 : " + pass);
-			System.out.println("아이디 : " + userId);
+			
 			MemberBean mem3 = new MemberBean();
 			mem3.setUserId(request.getParameter("USERID"));
-			mem3.setPassword(request.getParameter("PASSWORD"));
-			//MemberServiceImpl.getInstance().updateMember(mem3);
+			mem3.setPassword(request.getParameter("PASSWORD")+
+					"/"+
+					request.getParameter("NEWPASSWORD"));
+			mem3.setTeamId(request.getParameter("TEAM_ID"));
+			mem3.setRoll(request.getParameter("ROLL"));
+			System.out.println(mem3);
+			MemberServiceImpl.getInstance().updateMember(mem3);
 			break;
 
 		default:
