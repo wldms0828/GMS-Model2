@@ -29,6 +29,7 @@ public class Commander {
 		case SEARCHBYNAME : 
 			System.out.println("---이름검색---");
 			cmd = new SearchCommand(request);
+			cmd = new CountCommand(request);
 			break;
 		case RETRIEVE : 
 			System.out.println("--아이디검색--");
@@ -41,11 +42,9 @@ public class Commander {
 		case MEMBERLIST : 
 			System.out.println("--멤버전체목록--");
 			cmd = new ListCommand(request);
-			break;
-		case COUNTMEMBER : 
-			System.out.println("--회원수--");
 			cmd = new CountCommand(request);
 			break;
+
 			//reference v
 		default:
 			break;

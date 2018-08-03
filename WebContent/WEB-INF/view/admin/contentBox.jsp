@@ -24,6 +24,7 @@
 		</tr>
 		<c:forEach items="${list}" var="member">
 		<tr>
+	
 			<td>${member.userId}</td>
 			<td><a class="username" id="${member.userId}" >${member.name}</a></td>
 <%-- 			class="username" 는 값이고, id="${member.userId}는 객체이기 때문에 id 값이 중복안된다. --%>
@@ -35,6 +36,15 @@
 <!-- 			loombok으로 getter,setter생략  -->
 		</tr>
 		</c:forEach>
+
+		<tr>
+		<td colspan="6">
+		<c:forEach begin="1" end="${count}" step="1" var ="member1">
+
+			<span>${member1}</span>
+		</c:forEach>
+		</td>
+		</tr>
 	</table>
 	
 </div>

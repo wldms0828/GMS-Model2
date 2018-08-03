@@ -5,7 +5,6 @@ public interface MemberService {
 	public void createMember(MemberBean member);
 	public List<MemberBean> listMember();
 	public List<MemberBean> findMemberByName(String name);
-
 	public MemberBean findMemberById(String id);
 	public int countMember();
 	public void updateMember(MemberBean member);

@@ -64,23 +64,28 @@ var service = (()=>{
 var admin =(()=>{
 	return {
 		check : x=>{
-			var isAdmin = confirm('관리자입니까');
-			//confirm은 window의 객체이다.
-			//isAdmin을 넣게 되면 return타입은 boolean이다.
-			if(isAdmin){
-				var password = prompt('관리자 비밀번호 입력 바랍니다.');
-				if(password==1){
-					router.move({
-						ctx: x,
-						domain: "admin",
-						action: "memberlist",
-						page: "main"
-					});
-				}
-			}else{
-				alert('관리자만 접근 가능합니다.');
-			}
-		},
+			router.move({
+				ctx: x,
+				domain: "admin",
+				action: "memberlist",
+				page: "main"
+//			var isAdmin = confirm('관리자입니까');
+//			//confirm은 window의 객체이다.
+//			//isAdmin을 넣게 되면 return타입은 boolean이다.
+//			if(isAdmin){
+//				var password = prompt('관리자 비밀번호 입력 바랍니다.');
+//				if(password==1){
+//					router.move({
+//						ctx: x,
+//						domain: "admin",
+//						action: "memberlist",
+//						page: "main"
+//					});
+//				}
+//			}else{
+//				alert('관리자만 접근 가능합니다.');
+			})
+	},
 		main:x=>{
 			 service.addClass(
 	 		document.getElementById('contentBoxMeta'),'bgColorIs '
@@ -119,6 +124,9 @@ var admin =(()=>{
 
 	 		})
 	 	}
+		},
+		count : x=>{
+			
 		}
 };})();
 

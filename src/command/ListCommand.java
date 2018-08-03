@@ -24,9 +24,13 @@ public class ListCommand extends Command {
 	@Override
 	public void execute() {
 		System.out.println("--리스트 진입--");
+		
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case ADMIN : 
 		request.setAttribute("list", MemberServiceImpl.getInstance().listMember());
+		int count=MemberServiceImpl.getInstance().countMember();
+		request.setAttribute("count",(count%5==0)?count/5:count/5+1);
+		
 		break;
 		default:
 			break;
