@@ -5,8 +5,7 @@
 	<a id="moveLoginForm" >LOGIN</a>
 	&nbsp;&nbsp;&nbsp; 
 	<a id="moveJoinForm" >JOIN</a><br />
-	<br />
-	<a id="movedeleteForm">회원탈퇴</a>
+	
 </div>
 
 <!-- <script>

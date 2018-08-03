@@ -28,7 +28,7 @@ public class AdminController extends HttpServlet{
 				Carrier.forward(request, response);
 		
 			//request.getRequestDispatcher("/WEB-INF/view/member/" + page + ".jsp").forward(request, response);
-			// DB접근하지 않아도 될 case와
+			//DB접근하지 않아도 될 case와
 			break;
 		
 		case LOGIN:
@@ -41,16 +41,22 @@ public class AdminController extends HttpServlet{
 			break;
 		case MEMBERLIST:
 			System.out.println("--MEMBERLIST--");
-			Carrier.redirect(request, response, "");
+			Carrier.forward(request, response);
 			break;
 		case RETRIEVE:
-			System.out.println("--USERID--");
-			Carrier.redirect(request, response, "");
+			System.out.println("--RETRIEVE--");
+			Carrier.forward(request, response);
+			
 			break;	
 		case COUNTMEMBER:
 			
 			MemberServiceImpl.getInstance().countMember();
 			System.out.println("회원수 : " + MemberServiceImpl.getInstance().countMember());
+			break;
+		case SEARCHBYNAME :
+			System.out.println("--SEARCHBYNAME--");
+			Carrier.forward(request, response);
+			break;
 		default : 
 				Carrier.redirect(request, response, "");
 			break;

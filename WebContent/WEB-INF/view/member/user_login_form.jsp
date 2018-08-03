@@ -8,13 +8,13 @@
 <div id = "user-login-layout">
 <h1>로그인</h1>
 <form id = "user_login_form" name="user_login_form" style = "border:1px solid black">
-	ID :
+	ID :<br />
 	<input type="text" name="USERID"  />
 	<br />
-	PASSWORD:
+	PASSWORD:	<br />
 	<input type="text" name="PASSWORD" />
 	<br />
-	<input type="hidden" name = "action" value = "login" />
+<!-- 	<input type="hidden" name = "action" value = "login" /> -->
 	<input id="loginFormBtn" type="button" value ="전송"/>
 </form>
 </div>
@@ -29,6 +29,10 @@
 			var form = document.getElementById('user_login_form');	
 			form.action = "${ctx}/member.do";
 			form.method = "post";
+			var node = document.createElement('input');
+			node.innerHTML=
+				'<input type = "hidden" name="action" value="login"/>';
+				form.appendChild(node);
 			form.submit();
 		}else{
 			alert(x.text);

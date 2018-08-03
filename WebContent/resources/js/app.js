@@ -25,9 +25,13 @@ var service = (()=>{
 				}
 			}
 			return json;
-		}
-		
-	
+		},
+		addClass : (dom,cName)=>{
+			var arr = cName.split(" ");
+			if(arr.indexOf(cName) == -1){
+				dom.className +=" "+cName;
+			}
+		}		
 	}
 	
 //	return {
@@ -51,6 +55,74 @@ var service = (()=>{
 //		} 		
 //	};
 })();
+//var admin =(()=>{return {};})();
+//JSON은 속성(property)과 기능(function)이 모두 들어올 수 있으므로 객체이다.
+//var admin =((x)=>{ //x를 넣어주면 꼭 외부에서 들어오는 값이 있어야 사용되는 객체가 된다 그러므로 x를 넣어주지 말아라
+//	return {
+//		check : ()=>{}
+//};})();
+var admin =(()=>{
+	return {
+		check : x=>{
+			var isAdmin = confirm('관리자입니까');
+			//confirm은 window의 객체이다.
+			//isAdmin을 넣게 되면 return타입은 boolean이다.
+			if(isAdmin){
+				var password = prompt('관리자 비밀번호 입력 바랍니다.');
+				if(password==1){
+					router.move({
+						ctx: x,
+						domain: "admin",
+						action: "memberlist",
+						page: "main"
+					});
+				}
+			}else{
+				alert('관리자만 접근 가능합니다.');
+			}
+		},
+		main:x=>{
+			 service.addClass(
+	 		document.getElementById('contentBoxMeta'),'bgColorIs '
+ );
+			 service.addClass(
+	 		document.getElementById('contentBoxTab'),'marginAuto width80 height100px'
+);
+			 service.addClass(
+	 		document.getElementById('content-box-search'),'width90 marginAuto'
+);
+
+
+
+
+
+	 	document.getElementById('searchBtn').addEventListener('click',function(){
+
+	 		location.href =
+	 		(document.getElementById('searchOption').value==='USERID')?
+	 			x+'/admin.do?action=retrieve&page=memberDetail&USERID='+ document.getElementById('search').value
+
+	 		:
+	 			x+'/admin.do?action=searchbyname&page=main&searchOption='+ document.getElementById('searchOption').value+'&search='+ document.getElementById('search').value;
+	 	});
+//	 	var x = document.querySelectorAll('.username');
+	 	for(var i of document.querySelectorAll('.username')){
+	 		service.addClass(
+	 				i, 'cursor fontColor');
+//	 		x[i].className='fontColor';
+//	 		x[i].className='cursor';
+	 		i.addEventListener('click',function(){
+	 			alert('클릭'+this.getAttribute('id'));
+	 			location.href = 
+	 				x+"/admin.do?action=retrieve&page=memberDetail&USERID="+this.getAttribute('id');
+				
+
+	 		})
+	 	}
+		}
+};})();
+
+
 //userId, ssn, name, roll, teamId,password,gender;
 var member = (()=>{
 	var _userId, _age,_password,_name,_gender; 
@@ -59,9 +131,12 @@ var member = (()=>{
 	var setName = (name)=>{this._name=name;}
 	var setSsn = (ssn)=>{this.ssn=ssn;}
 	var setAge = x=>{
-		this._age = 119-x.substring(0,2);}
+
+		this._age = 119-x.substring(0,2);
+		}
 	var setGender = x=>{
-		 gd = x.charAt(7);
+		var gd = x.charAt(7);
+		var gender = "";
 		if(gd==='1'||gd==='3'){
 			gender = "남";
 			}else if(gd==='2'||gd==='4'){
@@ -93,6 +168,7 @@ var member = (()=>{
 		getName:getName,
 		getGender:getGender,
 		join : x=>{
+
 			member.setAge(x);
 			member.setGender(x);
 		}			

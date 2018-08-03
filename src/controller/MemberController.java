@@ -18,7 +18,7 @@ import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
 import command.Carrier;
 import command.ListCommand;
-import command.SearchTeamCommand;
+import command.SearchCommand;
 import command.Sentry;
 
 @WebServlet("/member.do") // annotation @ , url-mapping
@@ -78,8 +78,8 @@ public class MemberController extends HttpServlet {
 			System.out.println("--LOGIN--");
 			if(request.getAttribute("match").equals("TRUE")){
 				/*HttpSession s =*/
-				request.getSession().
-					setAttribute("user", request.getAttribute("user"));
+				/*request.getSession().
+					setAttribute("user", request.getAttribute("user"));*/
 				System.out.println(request.getAttribute("user"));
 				//servlet(interface)과 JSP(interface) 을 구현한 container이기 때문에 
 				//MemberController 에 끌고 나와서 선언해준다

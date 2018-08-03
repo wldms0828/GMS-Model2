@@ -11,8 +11,7 @@
     <td colspan="2" rowspan="3">
 	<img src="${img}/mypage/로그인.PNG"></img></td>
     <td >ID</td>
-    <td colspan="3">${user.userId}
-    <input type="hidden" name="USERID" value="${user.userId}" /></td>
+    <td colspan="3">${user.userId}</td>
   </tr>
   <tr>
     <td >이름</td>
@@ -53,8 +52,8 @@
   </tr>
 </table>
 <input type="button" id="updateConfirmBtn" value="변경완료"/>
-<input type="hidden" name="action" value="updatemember"/>
-<input type="hidden" name="page" value="mypage" />
+<!-- <input type="hidden" name="action" value="updatemember"/> -->
+<!-- <input type="hidden" name="page" value="mypage" /> -->
 	</form>
 	
 	<script>
@@ -80,6 +79,10 @@
 		var form = document.getElementById('updateForm');	
 		form.action = "${ctx}/member.do";
 		form.method = "post";
+		var node = document.createElement('input');
+		node.innerHTML=
+			'<input type="hidden" name="action" value="updatemember"/>'
+			form.appendChild(node);
 		form.submit();
 
 	}else{

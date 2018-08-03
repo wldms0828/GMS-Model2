@@ -7,12 +7,12 @@
 <body>
 	<div id="wrapper"></div>
 	<div id="header">
-		<jsp:include page="../common/titleBox.jsp" />
-	</div>
+	<h2>관리자 페이지</h2>
 	<jsp:include page="menuBox.jsp" />
+	</div>
 	<!-- 		header end -->
-	<div id="content">
-		<jsp:include page="../common/contentBox.jsp" />
+	<div id="content-box">
+		<jsp:include page="contentBox.jsp" />
 	</div>
 	<!-- 		content end -->
 	<div id="footer">

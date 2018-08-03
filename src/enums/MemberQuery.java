@@ -1,7 +1,8 @@
 package enums;
 
 public enum MemberQuery {
-	LOGIN, INSERT_MEMBER, JOIN, COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_BY_NAME, SEARCH_BY_ID;
+	LOGIN, INSERT_MEMBER, JOIN, COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_BY_NAME, SEARCH_BY_ID
+	,SELECT_BY_TEAM;
 	@Override
 	public String toString() {
 		String query = "";
@@ -51,19 +52,12 @@ public enum MemberQuery {
 					"    NAME," + 
 					"    SSN," + 
 					"    ROLL," + 
-					"    PASSWORD" + 
+					"    PASSWORD,"
+					+ " GENDER,"
+					+ " AGE" + 
 					" FROM MEMBER";
 			break;
-		case SELECT_BY_NAME : 
-			query = "SELECT " + 
-					"    MEM_ID USERID," + 
-					"    TEAM_ID TEAMID," + 
-					"    NAME," + 
-					"    SSN," + 
-					"    ROLL," + 
-					"    PASSWORD " + 
-					"    FROM MEMBER"+ 
-					"    WHERE TEAM_ID LIKE '%s' " ;
+		
 		case SEARCH_BY_ID : 
 			query = "SELECT MEM_ID USERID," + 
 					"    TEAM_ID TEAMID," + 
@@ -77,7 +71,31 @@ public enum MemberQuery {
 					" WHERE MEM_ID LIKE '%s'";
 			
 			break;
-			
+		case SELECT_BY_NAME : 
+			query = "SELECT MEM_ID USERID," + 
+					"    TEAM_ID TEAMID," + 
+					"    NAME," + 
+					"    SSN," + 
+					"    ROLL," + 
+					"    PASSWORD,"
+					+ " GENDER,"
+					+ " AGE " + 
+					"    FROM MEMBER"+ 
+					"    WHERE NAME LIKE '%s' " ;
+			break;
+		case SELECT_BY_TEAM : 
+			query = "SELECT " + 
+					"    MEM_ID USERID," + 
+					"    TEAM_ID TEAMID," + 
+					"    NAME," + 
+					"    SSN," + 
+					"    ROLL," + 
+					"    PASSWORD,"
+					+ " GENDER,"
+					+ " " + 
+					"    FROM MEMBER"+ 
+					"    WHERE TEAM_ID LIKE '%s' " ;
+			break;
 		}
 
 		return query;

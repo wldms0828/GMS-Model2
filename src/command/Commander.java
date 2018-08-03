@@ -28,7 +28,7 @@ public class Commander {
 			break;
 		case SEARCHBYNAME : 
 			System.out.println("---이름검색---");
-			cmd = new SearchTeamCommand(request);
+			cmd = new SearchCommand(request);
 			break;
 		case RETRIEVE : 
 			System.out.println("--아이디검색--");

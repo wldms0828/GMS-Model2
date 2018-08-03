@@ -4,7 +4,9 @@
 
 <div id="menu-box">
 	<ul id="menu">
+		<li><a href="${ctx}/common.do?action=move&page=main">HOME</a></li>
 		<li><a href="${ctx}/member.do?action=move&page=memberList">회원목록</a></li>
 		<li><a href="${ctx}/member.do?action=move&page=searchByIdForm">회원검색</a></li>
+
 	</ul>
 </div>

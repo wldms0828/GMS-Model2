@@ -16,12 +16,13 @@ public class DeleteCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("회원탈퇴입장");
 			MemberBean mem4 = new MemberBean();
-			mem4.setUserId(request.getParameter("USERID"));
+			mem4.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());
 			mem4.setPassword(request.getParameter("PASSWORD"));
+			request.getSession().invalidate();//logout기능
 			MemberServiceImpl.getInstance().deleteMember(mem4);
 			System.out.println("회원탈퇴성공");
 			break;

@@ -14,7 +14,7 @@
 	</div>
 
 	<!-- 		header end -->
-	<div id="content">
+	<div >
 		<jsp:include page="common/contentBox.jsp" />
 	</div>
 	<!-- 		content end -->

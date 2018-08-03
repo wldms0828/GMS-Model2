@@ -16,7 +16,7 @@ public class LoginCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("--로그인진입--");
 			MemberBean mem5 = new MemberBean();
@@ -25,7 +25,7 @@ public class LoginCommand extends Command{
 			
 			if(MemberServiceImpl.getInstance().login(mem5)) {
 				request.setAttribute("match", "TRUE");
-				request.setAttribute("user",
+				request.getSession().setAttribute("user",
 						MemberServiceImpl.getInstance().findMemberById(request.getParameter("USERID")));
 				System.out.println("로그인성공");
 		

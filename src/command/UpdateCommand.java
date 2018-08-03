@@ -21,7 +21,9 @@ public class UpdateCommand extends Command{
 			System.out.println("비번변경입장");
 			
 			MemberBean mem3 = new MemberBean();
-			mem3.setUserId(request.getParameter("USERID"));
+			mem3.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());
+			//hidden을 사용하지 않고 session으로 아이디를 불러오는 방법
+			//session->attribute->userId를 불러오는데 MemberBean으로 캐스트를 해줘야 가능하다.
 			mem3.setPassword(request.getParameter("PASSWORD")+
 					"/"+
 					request.getParameter("NEWPASSWORD"));

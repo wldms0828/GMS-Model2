@@ -8,6 +8,7 @@ public interface MemberDAO {
 	public void insertMemberBean(MemberBean member); 
 	public List<MemberBean> selectAllMember();
 	public List<MemberBean> selectByName(String name);
+
 	public MemberBean selectById(String id);
 	public int countMember();
 	public void updateMember(MemberBean member);

@@ -19,11 +19,11 @@
     <td colspan="2" rowspan="3">
      <img src="${img}/mypage/로그인.PNG"></img></td>
     <td  >ID</td>
-    <td colspan="3">${user.userId}</td>
+    <td colspan="3">${member.userId}</td>
   </tr>
   <tr>
     <td >이름</td>
-    <td colspan="3">${user.name}</td>
+    <td colspan="3">${member.name}</td>
   </tr>
   <tr>
     <td >비밀번호</td>
@@ -31,15 +31,15 @@
   </tr>
   <tr>
     <td colspan="2">나이</td>
-    <td >${user.age}</td>
+    <td >${member.age}</td>
     <td >팀명</td>
-    <td  colspan="2">${user.teamId}</td>
+    <td  colspan="2">${member.teamId}</td>
   </tr>
   <tr>
     <td colspan="2">성별</td>
-    <td >${user.gender}</td>
+    <td >${member.gender}</td>
     <td >역할</td>
-    <td colspan="2">${user.roll}</td>
+    <td colspan="2">${member.roll}</td>
     
   </tr>
 </table>

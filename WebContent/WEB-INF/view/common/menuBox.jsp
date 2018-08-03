@@ -5,7 +5,13 @@
 		<ul	id="menu">
 			<li><a href="">HOME</a></li>
 			<li><a href="">ABOUT</a></li>
-			<li><a href="${ctx}/admin.do?action=move&page=main">ADMIN</a></li>
+			<li><a id="moveToAdminMain">ADMIN</a></li>
 		
 			</ul>
 		</div> 
+<script>
+	document.getElementById('moveToAdminMain').
+	addEventListener('click',function(){
+		admin.check("${ctx}");
+	});
+</script>

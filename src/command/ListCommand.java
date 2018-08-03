@@ -1,11 +1,13 @@
 package command;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 import javax.servlet.http.HttpServletRequest;
 
-import domain.MemberBean;
+import domain.*;
+import enums.Action;
+import enums.Domain;
 import oracle.net.aso.r;
 import service.MemberServiceImpl;
 
@@ -22,7 +24,14 @@ public class ListCommand extends Command {
 	@Override
 	public void execute() {
 		System.out.println("--리스트 진입--");
+		switch(Domain.valueOf(domain.toUpperCase())) {
+		case ADMIN : 
 		request.setAttribute("list", MemberServiceImpl.getInstance().listMember());
+		break;
+		default:
+			break;
+		}
+		
 		super.execute();
 	}
 }
