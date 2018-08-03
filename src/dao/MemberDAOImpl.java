@@ -13,7 +13,7 @@ public class MemberDAOImpl implements MemberDAO {
 	private static MemberDAO instance = new MemberDAOImpl();
 	public static MemberDAO getInstance() {return instance;}
 	private MemberDAOImpl() {}
-//
+
 	@Override
 	public void insertMemberBean(MemberBean member) {
 		try {
