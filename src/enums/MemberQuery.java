@@ -8,23 +8,23 @@ public enum MemberQuery {
 		String query = "";
 		switch (this) {
 		case LOGIN:
-			query = " SELECT MEM_ID  " +
-						", TEAM_ID   " +
+			query = " SELECT USERID  " +
+						", TEAMID   " +
 						", NAME  " +
 						", SSN  " +
 						", PASSWORD   " 
 						+ "FROM MEMBER "
-					+ " WHERE MEM_ID LIKE '%s' " + " AND PASSWORD LIKE '%s' ";
+					+ " WHERE USERID LIKE '%s' " + " AND PASSWORD LIKE '%s' ";
 			break;
 	case INSERT_MEMBER:
-			query = "INSERT INTO MEMBER( MEM_ID,"
+			query = "INSERT INTO MEMBER( USERID,"
 					+ " NAME , "
 					+ " SSN, "
 					+ " PASSWORD, "
 					+ " GENDER, "
 					+ " AGE, "
 					+ " ROLL,"
-					+ " TEAM_ID) "
+					+ " TEAMID) "
 					+ " VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')";
 			break;
 		
@@ -33,22 +33,22 @@ public enum MemberQuery {
 			break;
 		case UPDATE_MEMBER:
 			query = "UPDATE MEMBER SET PASSWORD = '%s', "
-					+ "	TEAM_ID ='%s', "
+					+ "	TEAMID ='%s', "
 					+ "	ROLL='%s'" + 
-					"	WHERE MEM_ID LIKE '%s'" + 
+					"	WHERE USERID LIKE '%s'" + 
 					"	AND PASSWORD LIKE '%s'";
               ;
 			break;
 		case DELETE_MEMBER:
 			query = "DELETE FROM MEMBER " + 
-				" WHERE MEM_ID LIKE '%s' " + 
+				" WHERE USERID LIKE '%s' " + 
 				" AND PASSWORD LIKE '%s'";
 			
 			break;
 		case SELECT_ALL: 
 			query = "SELECT " + 
-					"    MEM_ID USERID," + 
-					"    TEAM_ID TEAMID," + 
+					"    USERID," + 
+					"    TEAMID," + 
 					"    NAME," + 
 					"    SSN," + 
 					"    ROLL," + 
@@ -59,8 +59,8 @@ public enum MemberQuery {
 			break;
 		
 		case SEARCH_BY_ID : 
-			query = "SELECT MEM_ID USERID," + 
-					"    TEAM_ID TEAMID," + 
+			query = "SELECT USERID," + 
+					"    TEAMID," + 
 					"    NAME," + 
 					"    SSN," + 
 					"    ROLL," + 
@@ -68,33 +68,33 @@ public enum MemberQuery {
 					+ " GENDER,"
 					+ " AGE" + 
 					" FROM MEMBER" + 
-					" WHERE MEM_ID LIKE '%s'";
+					" WHERE USERID LIKE '%s'";
 			
 			break;
 		case SELECT_BY_NAME : 
-			query = "SELECT MEM_ID USERID," + 
-					"    TEAM_ID TEAMID," + 
+			query = "SELECT USERID," + 
+					"    TEAMID," + 
 					"    NAME," + 
 					"    SSN," + 
 					"    ROLL," + 
 					"    PASSWORD,"
 					+ " GENDER,"
-					+ " AGE " + 
+					+ " AGE" + 
 					"    FROM MEMBER"+ 
 					"    WHERE NAME LIKE '%s' " ;
 			break;
 		case SELECT_BY_TEAM : 
 			query = "SELECT " + 
-					"    MEM_ID USERID," + 
-					"    TEAM_ID TEAMID," + 
+					"    USERID," + 
+					"    TEAMID," + 
 					"    NAME," + 
 					"    SSN," + 
 					"    ROLL," + 
 					"    PASSWORD,"
 					+ " GENDER,"
-					+ " " + 
+					+ " AGE" + 
 					"    FROM MEMBER"+ 
-					"    WHERE TEAM_ID LIKE '%s' " ;
+					"    WHERE TEAMID LIKE '%s' " ;
 			break;
 		}
 

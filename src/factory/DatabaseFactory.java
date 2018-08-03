@@ -37,9 +37,9 @@ public class DatabaseFactory {
 		String driver = "",url = "";
 		switch ((Vendor)map.get("vendor")) {
 			case ORACLE :
-				database = new Oracle(driver,url,(String)map.get("username"),(String)map.get("password"));
 				driver=DBConstant.ORACLE_DRIVER;
 				url=DBConstant.CONNECTION_URL;
+				database = new Oracle(driver,url,(String)map.get("username"),(String)map.get("password"));
 				
 				break;
 			case MIRIADB : 

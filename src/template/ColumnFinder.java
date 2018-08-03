@@ -23,7 +23,7 @@ public class ColumnFinder {
 		Field[] f =clazz.getDeclaredFields();
 		for(int i=0;i<f.length;i++) {
 			s+=(i!=(f.length-1))?
-					f[1].getName()+",":
+					f[i].getName()+",":
 						f[i].getName();
 		}
 		return s;

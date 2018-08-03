@@ -1,6 +1,7 @@
 package template;
 
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,11 +15,11 @@ public abstract class QueryTemplate {
 	PreparedStatement pstmt;
 	public final void play(HashMap<String, Object>map) {
 		this.pstmt = null;
-		this.list=null;
+		this.list=new ArrayList<>();
 		this.map=map;
 		this.map.put("vendor",Vendor.ORACLE);
-		this.map.put("vendor",DBConstant.USER_NAME);
-		this.map.put("vendor",DBConstant.PASSWORD);
+		this.map.put("username",DBConstant.USER_NAME);
+		this.map.put("password",DBConstant.PASSWORD);
 		// initialize the game
 		initialize();
 		// start game

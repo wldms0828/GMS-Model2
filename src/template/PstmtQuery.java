@@ -1,7 +1,7 @@
 package template;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import domain.MemberBean;
 import enums.Domain;
@@ -11,11 +11,12 @@ public class PstmtQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-		map.put("sql", String.format("SELECT"
+		map.put("sql", String.format("SELECT "
 				+ColumnFinder.find(Domain.MEMBER)
 				+"	FROM %s"
 				+ "	WHERE %s "
 				+ "	LIKE ?", map.get("table"),map.get("column")));
+		System.out.println(map.get("sql"));
 		
 	}
 
@@ -29,6 +30,7 @@ public class PstmtQuery extends QueryTemplate {
 					.getConnection()
 					.prepareStatement((String)map.get("sql"));
 			pstmt.setString(1, "%"+map.get("value").toString()+"%");
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,8 +66,5 @@ public class PstmtQuery extends QueryTemplate {
 
 		
 	}	
-		
-	
-
 }
 

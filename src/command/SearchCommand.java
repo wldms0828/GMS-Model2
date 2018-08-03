@@ -1,11 +1,8 @@
 package command;
 
-import java.util.*;
 
-import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 
-import domain.*;
 import service.*;
 
 public class SearchCommand extends Command {

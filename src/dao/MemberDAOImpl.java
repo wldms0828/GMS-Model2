@@ -74,8 +74,13 @@ public class MemberDAOImpl implements MemberDAO {
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String ,Object> map = new HashMap<>();
-		map.put("column", name.split("/")[0]);
-		map.put("value", name.split("/")[1]);
+		//요고요고 틀렸어, Search Command에서 search랑 search option한 문자열로 합칠때 순서가
+		//입력한 문자가 index 0번째에, 컬럼명이 index 1번째로 해서 합쳤는데
+		//여기 와서 map에 넣어줄때 반대로 넣었어, 요롷게 되어있었어!ㅋㅋㅋㅋ
+		/*map.put("column", name.split("/")[0]);
+		map.put("value", name.split("/")[1]);*/
+		map.put("column", name.split("/")[1]);
+		map.put("value", name.split("/")[0]);
 		map.put("table", Domain.MEMBER);
 		q.play(map);
 		for(Object s:q.getList()) {
