@@ -11,9 +11,10 @@ var router = (()=>{
 var service = (()=>{
 	return{
 		nullChecker : x=>{
-			var i = 0;
+			var i = 0;//초기화
 			var json = {
 				checker : false,
+				//속성 키와 속성 값이 때문에 =말고 : 사용
 				text : "빈칸을 입력하세요"
 			};
 			for(i in x){
@@ -124,9 +125,15 @@ var admin =(()=>{
 
 	 		})
 	 	}
-		},
-		count : x=>{
-			
+		
+		for(var i of document.querySelectorAll('.pageNum')){
+	 		service.addClass(
+	 				i, 'cursor fontColor');
+			i.addEventListener('click',function(){
+				location.href=
+					x+"/admin.do?action=memberlist&page=main&pageIndex="+this.getAttribute('id');
+			});
+		}
 		}
 };})();
 

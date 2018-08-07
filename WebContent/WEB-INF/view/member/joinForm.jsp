@@ -86,9 +86,7 @@
  				,document.joinForm.PASSWORD.value		
  				,document.joinForm.NAME.value]);
  			if(x.checker){
- 				form.action = "${ctx}/member.do";
- 				form.method = "post";	
-
+ 				
  				member.join(form.SSN.value);
  				var arr = [
  	 				{name:'GENDER', value:member.getGender()},
@@ -101,7 +99,10 @@
  	  				node.setAttribute('value',arr[i].value);
  					form.appendChild(node);
  				}
-					form.submit();
+ 	 			//input tag를 만든것 
+ 	 			form.action = "${ctx}/member.do";
+ 				form.method = "post";	
+				form.submit();
  				}else{
  	 				alert(x.text);}
  	   		

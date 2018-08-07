@@ -41,6 +41,7 @@ public class CommonController extends HttpServlet {
 /*		HttpSession session = request.getSession();
 		session.setAttribute(Domain.CTX.toString(), request.getContextPath());*/
 		request.getRequestDispatcher(Term.WEBPATH.toString()+Term.MAIN.toString()).forward(request, response);
+		//main페이지로 이동!
 		
 	}
 

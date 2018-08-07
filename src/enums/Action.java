@@ -9,7 +9,8 @@ public enum Action {
 	SEARCHBYNAME,
 	MEMBERLIST,
 	LOGIN,
-	JOIN
-	
+	JOIN;
+
+
 	
 }

@@ -39,10 +39,30 @@
 
 		<tr>
 		<td colspan="6">
-		<c:forEach begin="1" end="${count}" step="1" var ="member1">
-
-			<span>${member1}</span>
+		전체회원수 : ${count}
+<!-- 		list commander에 담아서 count command에서 리턴해준다. -->
+<%-- 		<c:forEach begin="1" end="${count}" step="1" var ="member1"> --%>
+<ul class="pagebox">
+		<c:forEach begin="${beginPage }" end="${endPage }" step="1" varStatus="i">
+		<li>
+		<a id="${i.index}" class="pageNum" name="pageIndex">${i.index}</a>		
+		</li>
 		</c:forEach>
+      <c:choose>
+         <c:when test = "${count gt 25}">
+         	다음▶
+         </c:when>
+         <c:otherwise>
+		 </c:otherwise>
+	</c:choose>
+
+		
+</ul>
+
+
+<%-- 			<span>${member1}</span> --%>
+<%-- 		</c:forEach> --%>
+<!-- 		for loop은 index로 찾는 것 for each는 객체로 찾는 것  for each가 성능이 더 좋은데 가까운거 부터 가기 때문이다.-->
 		</td>
 		</tr>
 	</table>

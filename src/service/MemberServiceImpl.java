@@ -58,6 +58,10 @@ public class MemberServiceImpl implements MemberService{
 	public MemberBean join(MemberBean member) {
 		return MemberDAOImpl.getInstance().join(member);
 	}
+	@Override
+	public List<MemberBean> getList(Map<?, ?> param) {
+		return MemberDAOImpl.getInstance().selectAllList(param);
+	}
 
 	
 }

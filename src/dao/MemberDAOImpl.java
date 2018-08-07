@@ -68,7 +68,59 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return list;
 	}
-
+//	@Override
+//	public List<MemberBean> selectAllList(Map<?, ?> param) {
+//		List<MemberBean> list1=new ArrayList<>(); 
+//		try {
+//			String sql=String.format(MemberQuery.SELECT_LIST.toString(), param.get("beginRow"),param.get("endRow"));
+//		
+//			System.out.println(sql);
+//			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USER_NAME ,DBConstant.PASSWORD)
+//					.getConnection().createStatement().executeQuery(sql);
+//			MemberBean mem = null;
+//			while(rs.next()) {
+//				mem = new MemberBean();
+//				mem.setUserId(rs.getString("USERID"));
+//				mem.setTeamId(rs.getString("TEAMID"));
+//				mem.setName(rs.getString("NAME"));
+//				mem.setSsn(rs.getString("SSN"));
+//				mem.setRoll(rs.getString("ROLL"));
+//				mem.setPassword(rs.getString("PASSWORD"));
+//				mem.setGender(rs.getString("GENDER"));
+//				mem.setAge(rs.getString("AGE"));
+//				list1.add(mem);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//
+//		String beginRow = (String) param.get("beginRow");
+//		System.out.println("-----시작 하는 행--------" +beginRow );
+//		String endRow = (String) param.get("endRow");
+//		System.out.println("-----마지막 행--------" +endRow);	
+//		System.out.println(list1);
+//		return list1;
+//	}
+	@Override
+	public List<MemberBean> selectAllList(Map<?, ?> param) {
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list1=new ArrayList<>(); 
+		HashMap<String, Object> map = new HashMap<>();
+		String beginRow = (String) param.get("beginRow");
+		System.out.println("-----시작 하는 행--------" +beginRow );
+		String endRow = (String) param.get("endRow");
+		System.out.println("-----마지막 행--------" +endRow);	
+		map.put("beginRow", beginRow);
+		map.put("endRow", endRow);
+		map.put("query", MemberQuery.SELECT_LIST);
+		q.play(map);
+		for(Object s:q.getList()) {
+			list1.add((MemberBean) s);
+		}
+		System.out.println(list1);
+		return list1;
+	}
 	@Override
 	public List<MemberBean> selectByName(String name) {
 		QueryTemplate q = new PstmtQuery();
@@ -82,6 +134,7 @@ public class MemberDAOImpl implements MemberDAO {
 		map.put("column", name.split("/")[1]);
 		map.put("value", name.split("/")[0]);
 		map.put("table", Domain.MEMBER);
+		map.put("query",MemberQuery.SELECT_SOME );
 		q.play(map);
 		for(Object s:q.getList()) {
 			list.add((MemberBean) s);
@@ -228,6 +281,5 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return mem2;
 	}
-
 
 }

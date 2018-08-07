@@ -5,19 +5,35 @@ import java.sql.*;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.MemberQuery;
 import factory.DatabaseFactory;
 
 public class PstmtQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-		map.put("sql", String.format("SELECT "
-				+ColumnFinder.find(Domain.MEMBER)
-				+"	FROM %s"
-				+ "	WHERE %s "
-				+ "	LIKE ?", map.get("table"),map.get("column")));
-		System.out.println(map.get("sql"));
-		
+		System.out.println(map.get("query"));
+		switch (MemberQuery.valueOf(map.get("query").toString())) {
+		case SELECT_SOME:
+			map.put("sql", String.format("SELECT "
+					+ColumnFinder.find(Domain.MEMBER)
+					+"	FROM %s"
+					+ "	WHERE %s "
+					+ "	LIKE ?", map.get("table"),map.get("column")));
+			System.out.println(map.get("sql"));
+			
+			break;
+		case SELECT_LIST : 
+			map.put("sql", String.format("SELECT T.* " + 
+					"	FROM(SELECT ROWNUM SEQ, M.* " + 
+					"	FROM MEMBER M " + 
+					"	ORDER BY SEQ DESC)T " + 
+					"	WHERE T.SEQ BETWEEN %s AND %s" ,map.get("beginRow"),map.get("endRow")));
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	@Override

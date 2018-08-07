@@ -8,8 +8,6 @@ public class Sentry {
 	//servletPath.substring(1,servletPath.indexOf(".")) 는 domain
 	public static Command cmd = new Command();
 	public static void init(HttpServletRequest request, HttpServletResponse response) {
-		String servletPath = request.getServletPath();
-		System.out.println("---센트리진입---" + servletPath.substring(1, servletPath.indexOf(".")));
 		cmd = Commander.order(
 				request, response);
 				/*servletPath.substring(1,servletPath.indexOf(".")),

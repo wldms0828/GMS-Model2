@@ -4,6 +4,7 @@ import java.util.*;
 public interface MemberService {
 	public void createMember(MemberBean member);
 	public List<MemberBean> listMember();
+	public List<MemberBean> getList(Map<?,?>param);
 	public List<MemberBean> findMemberByName(String name);
 	public MemberBean findMemberById(String id);
 	public int countMember();

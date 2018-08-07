@@ -41,7 +41,7 @@ public class MemberController extends HttpServlet {
 		case JOIN :
 				
 				System.out.println("JOIN");
-				Carrier.redirect(request, response,"/member.do?action=move&page=user_login_form");
+				Carrier.forward(request, response);
 		
 				
 				// DB접근해야할 case

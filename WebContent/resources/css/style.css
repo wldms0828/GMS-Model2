@@ -154,6 +154,14 @@ table#content-box-search{
 .height100px{height: 100px}
 .fontColor{color: blue}
 .cursor{cursor: pointer}
+.pagebox{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.pagebox li{
+	display: inline;
+}
 
 /* table,th,tr,td{border : 1px solid black;border-collapse: collapse;text-align : center}
 .width-full{width : 100%}

@@ -1,14 +1,15 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import domain.MemberBean;
 
 public interface MemberDAO {
 	public void insertMemberBean(MemberBean member); 
 	public List<MemberBean> selectAllMember();
+	public List<MemberBean> selectAllList(Map<?, ?> param);
 	public List<MemberBean> selectByName(String name);
-
 	public MemberBean selectById(String id);
 	public int countMember();
 	public void updateMember(MemberBean member);
