@@ -77,18 +77,19 @@
 	var x = service.nullChecker([document.updateForm.PASSWORD.value]);
 	if(x.checker){
 		var form = document.getElementById('updateForm');	
-		form.action = "${ctx}/member.do";
-		form.method = "post";
 		var node = document.createElement('input');
-		node.innerHTML=
-			'<input type="hidden" name="action" value="updatemember"/>'
+// 		node.innerHTML=
+// 			'<input type="hidden" name="action" value="updatemember"/>'
+		node.setAttribute('type','hidden');
+		node.setAttribute('name','action');
+		node.setAttribute('value','updatemember');
 			form.appendChild(node);
-		form.submit();
+				form.action = "${ctx}/member.do";
+				form.method = "post";
+				form.submit();
 
 	}else{
-		alert(x.text);}
-		alert('"변경완료" 버튼 클릭함!');});
-
+		alert(x.text);}}
 
 </script>
 </body>

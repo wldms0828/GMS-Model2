@@ -27,13 +27,13 @@
 			,document.user_login_form.PASSWORD.value]);
 		if(x.checker){
 			var form = document.getElementById('user_login_form');	
-			form.action = "${ctx}/member.do";
-			form.method = "post";
 			var node = document.createElement('input');
-			node.innerHTML=
-				'<input type = "hidden" name="action" value="login"/>';
-				form.appendChild(node);
-			form.submit();
+				node.innerHTML=
+					'<input type = "hidden" name="action" value="login"/>';
+					form.appendChild(node);
+				form.action = "${ctx}/member.do";
+				form.method = "post";
+				form.submit();
 		}else{
 			alert(x.text);
 		}	

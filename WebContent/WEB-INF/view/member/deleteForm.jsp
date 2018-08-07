@@ -41,8 +41,6 @@
 		if(x.checker){
 			if(form.PASSWORD.value==='${user.password}'){
 				//form.PASSWORD.value에서 PASSWORD는 속성값
-				form.action = "${ctx}/member.do";
-				form.method = "post";
 				var node = document.createElement('input');
 				//document.createElement 는 document가 setter한거
 				//input태그를 만든것
@@ -56,7 +54,9 @@
 				node.setAttribute('value','deletemember');
 				//객체를 통한 방법
 					form.appendChild(node);
-					//node를 form의 자식으로 만들어 줘야 사용할 수 있다. 
+				//node를 form의 자식으로 만들어 줘야 사용할 수 있다. 
+				form.action = "${ctx}/member.do";
+				form.method = "post";
 				form.submit();
 				alert('회원탈퇴성공');
 			}else{

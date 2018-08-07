@@ -49,7 +49,7 @@
 		</li>
 		</c:forEach>
       <c:choose>
-         <c:when test = "${count gt 25}">
+         <c:when test = "${existPrev}">
          	다음▶
          </c:when>
          <c:otherwise>

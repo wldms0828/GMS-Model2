@@ -48,7 +48,7 @@ public class MemberController extends HttpServlet {
 			break;
 		case UPDATEMEMBER:
 			System.out.println("UPDATE");
-			Carrier.redirect(request, response, "");
+			Carrier.forward(request, response);
 			
 				break;
 		case DELETEMEMBER:

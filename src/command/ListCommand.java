@@ -52,10 +52,15 @@ public class ListCommand extends Command {
 		}else{
 			endPage=blockSize;
 		};	
-		
+		String existPrev = "";
+		String existnext = "";
+		String nextBlock = "";
+	
+	request.setAttribute("existPrev", true);	
 //		boolean existPrev = false;
 //		if(prevBlock>=0) {
 //			existPrev =true;
+//			
 //		}
 //		boolean existnext=false;
 //		if(nextBlock<=pagecCount) {
