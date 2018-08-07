@@ -52,7 +52,7 @@ public class ListCommand extends Command {
 		}else{
 			endPage=blockSize;
 		};	
-		
+
 //		boolean existPrev = false;
 //		if(prevBlock>=0) {
 //			existPrev =true;
