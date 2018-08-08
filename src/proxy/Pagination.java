@@ -17,18 +17,17 @@ public class Pagination implements Proxy {
 			this.pageSize=5;
 			this.blockSize=5;
 			this.count=MemberServiceImpl.getInstance().countMember();
-			this.pageIndex2=0;
 			this.beginRow=(pageIndex-1) * pageSize + 1 ;
 			this.endRow=pageSize * (pageIndex);
-			this.beginPage=1;
+			this.beginPage=pageIndex-((pageIndex-1)%blockSize);
 			this.pageCount= (count%pageSize==0)?
 					count/pageSize:count/pageSize+1;
 			this.endPage = ((beginPage+pageSize-1)<pageCount)?
 					beginPage+blockSize-1:pageCount;
 			this.blockCount = (pageCount%blockSize==0)?
 					pageCount/blockSize : pageCount/blockSize+1;
-			this.prevBlock=beginPage-beginPage;
-			this.nextBlock=beginPage+beginPage;
+			this.prevBlock=beginPage-blockSize;
+			this.nextBlock=beginPage+blockSize;
 			this.existPrev=(prevBlock>=0);
 			System.out.println("%%%%%%%%%%%%%%%%5");
 			System.out.println("existPrev" + existPrev);

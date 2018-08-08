@@ -134,17 +134,7 @@ var admin =(()=>{
 					x+"/admin.do?action=memberlist&page=main&pageIndex="+this.getAttribute('id');
 			});
 		}
-		document.getElementById('prevBlock').addEventListener('click',()=>{
-			alert('existNext'+existNext);
-//			location.href=
-//				x+"/admin.do?action=memberlist&page=main&pageIndex="+"";
-		});
-		document.getElementById('nextBlock').addEventListener('click',()=>{
-			alert('nextBlock'+nextBlock);
-//			location.href=
-//				x+"/admin.do?action=memberlist&page=main&pageIndex="+"";
-		})
-
+		
 		}	
 };})();
 
