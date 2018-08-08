@@ -43,7 +43,7 @@
 				<ul class="pagebox">
 					<c:choose>
 							<c:when test="${page.existPrev}">
-					         	<li id="prevBlock" class="pageNum">◀이전</li>
+					         	<li id="${page.prevBlock}" class="pageNum">◀이전</li>
 					         </c:when>
 							<c:otherwise>
 							</c:otherwise>
@@ -55,7 +55,7 @@
 					</c:forEach>
 					<c:choose>
 						<c:when test="${page.existNext}">
-				         	<li id="nextBlock" class="pageNum">다음▶</li>
+				         	<li id="${page.nextBlock}" class="pageNum">다음▶</li>
 				         </c:when>
 						<c:otherwise>
 						</c:otherwise>

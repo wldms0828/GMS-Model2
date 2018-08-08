@@ -29,7 +29,9 @@ public class ListCommand extends Command {
 		System.out.println("--리스트 진입--");
 		String pageIndex = request.getParameter("pageIndex");
 		PageProxy pxy = new PageProxy();
+		System.out.println("pageIndex : "+pageIndex);
 	int pn = (pageIndex==null)?1: Integer.parseInt(pageIndex);
+	System.out.println("pn :" +pn);
 	pxy.carryOut(pn);
 	Pagination page = pxy.getPagination();
 //		int count=MemberServiceImpl.getInstance().countMember();
