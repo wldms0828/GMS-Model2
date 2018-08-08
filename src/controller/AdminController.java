@@ -50,8 +50,8 @@ public class AdminController extends HttpServlet{
 			break;	
 		case COUNTMEMBER:
 			
-			MemberServiceImpl.getInstance().countMember();
-			System.out.println("회원수 : " + MemberServiceImpl.getInstance().countMember());
+			MemberServiceImpl.getInstance().count();
+			System.out.println("회원수 : " + MemberServiceImpl.getInstance().count());
 			break;
 		case SEARCHBYNAME :
 			System.out.println("--SEARCHBYNAME--");

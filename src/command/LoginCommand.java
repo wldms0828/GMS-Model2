@@ -26,7 +26,7 @@ public class LoginCommand extends Command{
 			if(MemberServiceImpl.getInstance().login(mem5)) {
 				request.setAttribute("match", "TRUE");
 				request.getSession().setAttribute("user",
-						MemberServiceImpl.getInstance().findMemberById(request.getParameter("USERID")));
+						MemberServiceImpl.getInstance().retrive(request.getParameter("USERID")));
 				System.out.println("로그인성공");
 		
 			}else {

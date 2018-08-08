@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
 import command.Carrier;
-import command.ListCommand;
+import command.SearchCommand;
 import command.SearchCommand;
 import command.Sentry;
 
@@ -55,24 +55,16 @@ public class MemberController extends HttpServlet {
 			System.out.println("DELETE");
 			Carrier.redirect(request, response, "");
 			break;
-		case MEMBERLIST:
+		case MEMBERLIST:case SEARCHBYNAME : case RETRIEVE:
 			System.out.println("--MEMBERLIST--");
 			Carrier.redirect(request, response, "");
 			
 			break;
-		case SEARCHBYNAME :
-			System.out.println("--NAME--");
-			Carrier.redirect(request, response, "");
-			
-			break;
-		case RETRIEVE:
-			System.out.println("--USERID--");
-			Carrier.redirect(request, response, "");
-			break;
+
 		case COUNTMEMBER:
 			
-			MemberServiceImpl.getInstance().countMember();
-			System.out.println("회원수 : " + MemberServiceImpl.getInstance().countMember());
+			MemberServiceImpl.getInstance().count();
+			System.out.println("회원수 : " + MemberServiceImpl.getInstance().count());
 			break;
 		case LOGIN:
 			System.out.println("--LOGIN--");

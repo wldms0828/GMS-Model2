@@ -19,7 +19,7 @@ public class RetrieveCommand extends Command {
 	@Override
 	public void execute() {
 		System.out.println("--id검색--");
-		request.setAttribute("member",  MemberServiceImpl.getInstance().findMemberById(request.getParameter("USERID")));
+		request.setAttribute("member",  MemberServiceImpl.getInstance().retrive(request.getParameter("USERID")));
 		System.out.println("--id검색확인--");
 		
 		super.execute();

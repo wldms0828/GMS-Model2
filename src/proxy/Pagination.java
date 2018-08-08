@@ -16,7 +16,7 @@ public class Pagination implements Proxy {
 			this.pageIndex=(int) o;
 			this.pageSize=5;
 			this.blockSize=5;
-			this.count=MemberServiceImpl.getInstance().countMember();
+			this.count=MemberServiceImpl.getInstance().count();
 			this.pageIndex2=0;
 			this.beginRow=(pageIndex-1) * pageSize + 1 ;
 			this.endRow=pageSize * (pageIndex);

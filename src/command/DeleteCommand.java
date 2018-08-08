@@ -23,7 +23,7 @@ public class DeleteCommand extends Command{
 			mem4.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());
 			mem4.setPassword(request.getParameter("PASSWORD"));
 			request.getSession().invalidate();//logout기능
-			MemberServiceImpl.getInstance().deleteMember(mem4);
+			MemberServiceImpl.getInstance().remove(mem4);
 			System.out.println("회원탈퇴성공");
 			break;
 
