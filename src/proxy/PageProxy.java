@@ -5,22 +5,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import lombok.Data;
 import service.MemberServiceImpl;
-
+@Data
 public class PageProxy implements Proxy {
-	//request에 set하는 거 까지 해준다.
-	//제네릭은 선언할 때만 쓴다.
-	HttpServletRequest request;
+	private Pagination pagination;
 	@Override
-	public Map<?, ?> carryOut(Map<?, ?> param) {
-		Map<String, Object> map = new HashMap<>();
-		request=(HttpServletRequest) param.get("request");
-//		request.setAttribute("list", MemberServiceImpl.getInstance().getList(param));
-//		request.setAttribute("count", count);
-//		request.setAttribute("beginPage", beginPage);
-//		request.setAttribute("endPage", endPage );
-//		request.setAttribute("", endPage );
-		map.put("request", request);
-		return map;
+	public void carryOut(Object o) {
+		this.pagination=new Pagination();
+		pagination.carryOut(o);
+		
 	}
 }

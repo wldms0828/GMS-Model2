@@ -102,7 +102,7 @@ var admin =(()=>{
 
 
 
-	 	document.getElementById('searchBtn').addEventListener('click',function(){
+	 	document.getElementById('searchBtn').addEventListener('click',()=>{
 
 	 		location.href =
 	 		(document.getElementById('searchOption').value==='USERID')?
@@ -123,7 +123,7 @@ var admin =(()=>{
 	 				x+"/admin.do?action=retrieve&page=memberDetail&USERID="+this.getAttribute('id');
 				
 
-	 		})
+	 		});
 	 	}
 		
 		for(var i of document.querySelectorAll('.pageNum')){
@@ -134,8 +134,20 @@ var admin =(()=>{
 					x+"/admin.do?action=memberlist&page=main&pageIndex="+this.getAttribute('id');
 			});
 		}
-		}
+		document.getElementById('prevBlock').addEventListener('click',()=>{
+			alert('existNext'+existNext);
+//			location.href=
+//				x+"/admin.do?action=memberlist&page=main&pageIndex="+"";
+		});
+		document.getElementById('nextBlock').addEventListener('click',()=>{
+			alert('nextBlock'+nextBlock);
+//			location.href=
+//				x+"/admin.do?action=memberlist&page=main&pageIndex="+"";
+		})
+
+		}	
 };})();
+
 
 
 //userId, ssn, name, roll, teamId,password,gender;

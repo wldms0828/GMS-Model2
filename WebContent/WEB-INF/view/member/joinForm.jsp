@@ -91,7 +91,10 @@
  				var arr = [
  	 				{name:'GENDER', value:member.getGender()},
  	 				{name:'AGE', value:member.getAge()},
- 					{name:'action',value:'join'}];
+ 					{name:'action',value:'join'},
+ 					{name:'page',value:'user_login_form'}
+ 					];
+ 				
  	 			for(var i in arr){
  				var node = document.createElement('input');	
  					node.setAttribute('type','hidden');
