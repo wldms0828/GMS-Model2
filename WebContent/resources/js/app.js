@@ -122,7 +122,7 @@ var admin =(()=>{
 	 			location.href = 
 	 				x+"/admin.do?action=retrieve&page=memberDetail&USERID="+this.getAttribute('id');
 				
-
+//
 	 		});
 	 	}
 		
