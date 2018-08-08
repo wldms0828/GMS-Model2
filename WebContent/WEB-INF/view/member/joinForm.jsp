@@ -91,13 +91,14 @@
  				var arr = [
  	 				{name:'GENDER', value:member.getGender()},
  	 				{name:'AGE', value:member.getAge()},
- 					{name:'action',value:'join'}];
+ 					{name:'action',value:'join'},
+ 					{name:'page',value:'user_login_form'}];
  	 			for(var i in arr){
- 				var node = document.createElement('input');	
- 					node.setAttribute('type','hidden');
- 	 				node.setAttribute('name',arr[i].name);
- 	  				node.setAttribute('value',arr[i].value);
- 					form.appendChild(node);
+ 					var node = document.createElement('input');	
+	 					node.setAttribute('type','hidden');
+	 	 				node.setAttribute('name',arr[i].name);
+	 	  				node.setAttribute('value',arr[i].value);
+	 					form.appendChild(node);
  				}
  	 			//input tag를 만든것 
  	 			form.action = "${ctx}/member.do";

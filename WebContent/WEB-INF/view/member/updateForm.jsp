@@ -89,7 +89,9 @@
 				form.submit();
 
 	}else{
-		alert(x.text);}}
+		alert(x.text);}
+		});
+
 
 </script>
 </body>
