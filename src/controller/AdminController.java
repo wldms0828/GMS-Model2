@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Carrier;
-import command.Sentry;
+import command.Reciever;
 import enums.Action;
 import service.MemberServiceImpl;
 
@@ -19,18 +19,17 @@ public class AdminController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("--AdminController()--");
-		Sentry.init(request, response);
-		System.out.println("액션 : " + Sentry.cmd.getAction());
+		Reciever.init(request, response);
+		System.out.println("액션 : " + Reciever.cmd.getAction());
 		
-		switch (Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
+		switch (Action.valueOf(Reciever.cmd.getAction().toUpperCase())) {
 		case MOVE :
 				System.out.println("MOVE");
 				Carrier.forward(request, response);
 		
 			//request.getRequestDispatcher("/WEB-INF/view/member/" + page + ".jsp").forward(request, response);
 			//DB접근하지 않아도 될 case와
-			break;
-		
+			break;		
 		case LOGIN:
 			System.out.println("--LOGIN--");
 			if(request.getAttribute("match").equals("TRUE")){
@@ -39,23 +38,17 @@ public class AdminController extends HttpServlet{
 				Carrier.redirect(request, response, "/admin.do?action=move&page=main");
 			}
 			break;
-		case MEMBERLIST:
+		case SEARCH:
 			System.out.println("--MEMBERLIST--");
 			Carrier.forward(request, response);
 			break;
 		case RETRIEVE:
 			System.out.println("--RETRIEVE--");
-			Carrier.forward(request, response);
-			
+			Carrier.forward(request, response);			
 			break;	
-		case COUNTMEMBER:
-			
+		case COUNT:
 			MemberServiceImpl.getInstance().count();
 			System.out.println("회원수 : " + MemberServiceImpl.getInstance().count());
-			break;
-		case SEARCHBYNAME :
-			System.out.println("--SEARCHBYNAME--");
-			Carrier.forward(request, response);
 			break;
 		default : 
 				Carrier.redirect(request, response, "");

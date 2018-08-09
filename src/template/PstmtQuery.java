@@ -9,21 +9,18 @@ import enums.MemberQuery;
 import factory.DatabaseFactory;
 
 public class PstmtQuery extends QueryTemplate {
-
 	@Override
 	void initialize() {
-		System.out.println(map.get("query"));
+		System.out.println("8. PstmtQuery");
 		switch (MemberQuery.valueOf(map.get("query").toString())) {
-		case SELECT_SOME:
+		case SEARCH:
 			map.put("sql", String.format("SELECT "
 					+ColumnFinder.find(Domain.MEMBER)
 					+"	FROM %s"
 					+ "	WHERE %s "
 					+ "	LIKE ?", map.get("table"),map.get("column")));
-			System.out.println(map.get("sql"));
-			
 			break;
-		case SELECT_LIST : 
+		case LIST : 
 			map.put("sql", String.format("SELECT T.* " + 
 					"	FROM(SELECT ROWNUM SEQ, M.* " + 
 					"	FROM MEMBER M " + 
@@ -35,7 +32,6 @@ public class PstmtQuery extends QueryTemplate {
 		}
 
 	}
-
 	@Override
 	void startPlay() {
 		System.out.println("-----------------");
@@ -46,16 +42,11 @@ public class PstmtQuery extends QueryTemplate {
 					.getConnection()
 					.prepareStatement((String)map.get("sql"));
 			pstmt.setString(1, "%"+map.get("value").toString()+"%");
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		
-		
 	}
-
 	@Override
 	void endPlay() {
 		 try {
@@ -77,10 +68,5 @@ public class PstmtQuery extends QueryTemplate {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
-
-		
 	}	
 }
-

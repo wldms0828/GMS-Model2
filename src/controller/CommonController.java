@@ -25,22 +25,24 @@ public class CommonController extends HttpServlet {
 			request.getSession().setAttribute(r.toString().toLowerCase(),
 				(i==0)?
 					request.getContextPath():
-							request.getContextPath()+"/resources/"+r.toString().toLowerCase());
+						request.getContextPath()+"/resources/"+r.toString().toLowerCase());
 			
 		i++;
 	}
-		/*	if(i==0) {
-		request.getSession().setAttribute(r.toString().toLowerCase(),
-				request.getContextPath());
-		}else {
-			System.out.println(request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-			request.getSession().setAttribute(r.toString().toLowerCase(),request.getContextPath()+"/resources/"+r.toString());
-		}
-	i++;
-}*/
-/*		HttpSession session = request.getSession();
-		session.setAttribute(Domain.CTX.toString(), request.getContextPath());*/
-		request.getRequestDispatcher(Term.WEBPATH.toString()+Term.MAIN.toString()).forward(request, response);
+
+		//common으로 하드코딩할 수 도 있지만 주소값을 불러와서 하는것이 더 옳다.
+		request.getRequestDispatcher(
+				Term.WEBPATH.toString()
+				+request.getServletPath()
+				.substring(1, request.getServletPath().indexOf("."))
+				+Term.MAIN.toString())
+				.forward(request, response);
+//		request.getRequestDispatcher(
+//                	Term.WEBPATH.toString()
+//		         	+request.getServletPath()
+//					.split("/")[1].split("\\.")[0]
+//					+Term.MAIN.toString())
+//                	.forward(request, response);
 		//main페이지로 이동!
 		
 	}

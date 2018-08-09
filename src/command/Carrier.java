@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Carrier {
 	public static void forward(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Sentry.cmd.getView() : "+ Sentry.cmd.getView());
+		System.out.println("Sentry.cmd.getView() : "+ Reciever.cmd.getView());
 		try {
-			request.getRequestDispatcher(Sentry.cmd.getView()).forward(request, response);
+			request.getRequestDispatcher(Reciever.cmd.getView()).forward(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

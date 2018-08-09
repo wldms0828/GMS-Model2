@@ -10,8 +10,4 @@
 			</ul>
 		</div> 
 <script>
-	document.getElementById('moveToAdminMain').
-	addEventListener('click',function(){
-		admin.check("${ctx}");
-	});
 </script>

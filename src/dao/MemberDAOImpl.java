@@ -23,8 +23,28 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		return null;
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list=new ArrayList<>(); 
+		HashMap<String, Object> map = new HashMap<>();
+		String beginRow = (String) param.get("beginRow");
+		System.out.println("5. DAO : " +beginRow );
+		String endRow = (String) param.get("endRow");
+		System.out.println("6. DAO : " +endRow);	
+		String sql = MemberQuery.SEARCH.toString();
+		map.put("beginRow", beginRow);
+		map.put("endRow", endRow);
+/*
+ * 
+ * map.put("query", MemberQuery.LIST);
+		map.put("column", null);
+		map.put("value", null);
+		map.put("table", Domain.MEMBER);		
+		map.put("query",MemberQuery.SEARCH );*/
+		q.play(map);
+		for(Object s:q.getList()) {
+			list.add((MemberBean) s);
+		}
+		return list;
 	}
 	@Override
 	public MemberBean selectOne(String id) {

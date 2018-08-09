@@ -9,8 +9,8 @@ import domain.MemberBean;
 import enums.Domain;
 import service.*;
 
-public class UpdateCommand extends Command{
-	public UpdateCommand(HttpServletRequest request) {
+public class ModifyCommand extends Command{
+	public ModifyCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -19,7 +19,7 @@ public class UpdateCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(Reciever.cmd.domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("비번변경입장");
 			Map<String, Object> map=new HashMap<>();

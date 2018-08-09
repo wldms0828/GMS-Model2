@@ -20,11 +20,8 @@ public abstract class QueryTemplate {
 		this.map.put("vendor",Vendor.ORACLE);
 		this.map.put("username",DBConstant.USER_NAME);
 		this.map.put("password",DBConstant.PASSWORD);
-		// initialize the game
 		initialize();
-		// start game
 		startPlay();
-		// end game
 		endPlay();
 	}
 	

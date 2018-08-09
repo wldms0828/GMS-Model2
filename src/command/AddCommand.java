@@ -6,8 +6,8 @@ import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class CreateCommand extends Command {
-	public CreateCommand(HttpServletRequest request) {
+public class AddCommand extends Command {
+	public AddCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -29,7 +29,7 @@ public class CreateCommand extends Command {
 			mem.setAge(request.getParameter("AGE"));
 			mem.setGender(request.getParameter("GENDER"));
 			//mem.setSubject(ParamMap.getValues(request, "subject"));
-			MemberServiceImpl.getInstance().create(mem);
+			MemberServiceImpl.getInstance().add(mem);
 			System.out.println("회원가입성공");
 	
 		super.execute();

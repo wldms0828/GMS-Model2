@@ -56,37 +56,28 @@ var service = (()=>{
 //		} 		
 //	};
 })();
-//var admin =(()=>{return {};})();
-//JSON은 속성(property)과 기능(function)이 모두 들어올 수 있으므로 객체이다.
-//var admin =((x)=>{ //x를 넣어주면 꼭 외부에서 들어오는 값이 있어야 사용되는 객체가 된다 그러므로 x를 넣어주지 말아라
-//	return {
-//		check : ()=>{}
-//};})();
-var admin =(()=>{
+var common=(()=>{
 	return {
-		check : x=>{
-			router.move({
-				ctx: x,
-				domain: "admin",
-				action: "memberlist",
-				page: "main"
-//			var isAdmin = confirm('관리자입니까');
-//			//confirm은 window의 객체이다.
-//			//isAdmin을 넣게 되면 return타입은 boolean이다.
-//			if(isAdmin){
-//				var password = prompt('관리자 비밀번호 입력 바랍니다.');
-//				if(password==1){
-//					router.move({
-//						ctx: x,
-//						domain: "admin",
-//						action: "memberlist",
-//						page: "main"
-//					});
-//				}
-//			}else{
-//				alert('관리자만 접근 가능합니다.');
-			})
-	},
+		main : x=>{
+			var isAdmin = confirm('관리자입니까');
+			if(isAdmin){
+				var password = prompt('관리자 비밀번호 입력 바랍니다.');
+				if(password==1){
+					router.move({
+						ctx: x,
+						domain: "admin",
+						action: "search",
+						page: "main"
+					});
+				}
+			}else{
+				alert('관리자만 접근 가능합니다.');
+			}
+		}
+	};
+})();
+var admin =(()=>{
+	return {	
 		main:x=>{
 			 service.addClass(
 	 		document.getElementById('contentBoxMeta'),'bgColorIs '

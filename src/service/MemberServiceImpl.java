@@ -9,12 +9,13 @@ public class MemberServiceImpl implements MemberService{
 	public static MemberService getInstance() {return instance;}
 	private MemberServiceImpl() {}
 	@Override
-	public void create(MemberBean member) {
+	public void add(MemberBean member) {
 		MemberDAOImpl.getInstance().insert(member);
 		
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
+		System.out.println("4.serviceImpl List");
 		return MemberDAOImpl.getInstance().selectSome(param);
 	}
 	@Override

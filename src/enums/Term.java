@@ -7,7 +7,7 @@ public enum Term {
 		String res = "";
 		switch(this) {
 			case CTX : res = "ctx";break;
-			case WEBPATH : res = "/WEB-INF/view";break;
+			case WEBPATH : res = "/WEB-INF/view/";break;
 			case MAIN : res = "/main.jsp";break;
 			default:break;
 		

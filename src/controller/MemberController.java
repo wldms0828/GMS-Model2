@@ -19,7 +19,7 @@ import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 import command.Carrier;
 import command.SearchCommand;
 import command.SearchCommand;
-import command.Sentry;
+import command.Reciever;
 
 @WebServlet("/member.do") // annotation @ , url-mapping
 public class MemberController extends HttpServlet {
@@ -27,18 +27,12 @@ public class MemberController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("--MemberController()--");
-		Sentry.init(request, response);
-		System.out.println("액션 : " + Sentry.cmd.getAction());
+		Reciever.init(request, response);
+		System.out.println("액션 : " + Reciever.cmd.getAction());
 		
-		switch (Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
-		case MOVE :
-				System.out.println("MOVE");
-				Carrier.forward(request, response);
+		switch (Action.valueOf(Reciever.cmd.getAction().toUpperCase())) {
 		
-			//request.getRequestDispatcher("/WEB-INF/view/member/" + page + ".jsp").forward(request, response);
-			// DB접근하지 않아도 될 case와
-			break;
-		case JOIN :
+		case ADD :
 				
 				System.out.println("JOIN");
 				Carrier.forward(request, response);
@@ -46,26 +40,26 @@ public class MemberController extends HttpServlet {
 				
 				// DB접근해야할 case
 			break;
-		case UPDATEMEMBER:
+		case SEARCH: case RETRIEVE: 
+			System.out.println("--MEMBERLIST--");
+			Carrier.redirect(request, response, "");
+			break;
+		case MODIFY:
 			System.out.println("UPDATE");
 			Carrier.redirect(request, response, "");
 			
 				break;
-		case DELETEMEMBER:
+				
+		case REMOVE:
 			System.out.println("DELETE");
 			Carrier.redirect(request, response, "");
-			break;
-		case MEMBERLIST:case SEARCHBYNAME : case RETRIEVE:
-			System.out.println("--MEMBERLIST--");
-			Carrier.redirect(request, response, "");
-			
-			break;
-
-		case COUNTMEMBER:
-			
-			MemberServiceImpl.getInstance().count();
-			System.out.println("회원수 : " + MemberServiceImpl.getInstance().count());
-			break;
+				break;
+		case MOVE :
+			System.out.println("MOVE");
+			Carrier.forward(request, response);
+			//request.getRequestDispatcher("/WEB-INF/view/member/" + page + ".jsp").forward(request, response);
+		// DB접근하지 않아도 될 case와
+		break;
 		case LOGIN:
 			System.out.println("--LOGIN--");
 			if(request.getAttribute("match").equals("TRUE")){

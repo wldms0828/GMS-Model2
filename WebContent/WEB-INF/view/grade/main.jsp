@@ -19,7 +19,16 @@
 		<jsp:include page="../common/footerBox.jsp" />
 	</div>
 	<script>
-	admin.main('${ctx}');
+		function move(domain, action, page) {
+			alert('도메인로그인성공${ctx}');
+			console.log('도메인로그인성공${ctx}')
+			location.href = "${ctx}/" + domain + ".do?action=" + action
+					+ "&page=" + page;
+
+		}
+		function sendForm() {
+			return true;
+		}
 	</script>
 </body>
 </html>

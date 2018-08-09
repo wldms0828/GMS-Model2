@@ -13,33 +13,32 @@ public class Commander {
 			System.out.println("---무브진입---");
 			cmd = new MoveCommand(request);
 			break;
-		case JOIN : 
+		case ADD : 
 			System.out.println("---조인진입---");
-			cmd = new CreateCommand(request);
+			cmd = new AddCommand(request);
+			break;		
+		case SEARCH : 
+			System.out.println("--멤버전체목록--");
+			cmd = new SearchCommand(request);
+			cmd = new CountCommand(request);
 			break;
-			
-		case UPDATEMEMBER : 
-			System.out.println("---비번변경진입---");
-			cmd = new UpdateCommand(request);
-			break;
-		case DELETEMEMBER :
-			System.out.println("---회원탈퇴진입---");
-			cmd = new DeleteCommand(request);
-			break;
-
 		case RETRIEVE : 
 			System.out.println("--아이디검색--");
 			cmd = new RetrieveCommand(request);
+			break;
+		case MODIFY : 
+			System.out.println("---비번변경진입---");
+			cmd = new ModifyCommand(request);
+			break;
+		case REMOVE :
+			System.out.println("---회원탈퇴진입---");
+			cmd = new RemoveCommand(request);
 			break;
 		case LOGIN : 
 			System.out.println("--로그인--");
 			cmd = new LoginCommand(request);
 			break;
-		case MEMBERLIST : 
-			System.out.println("--멤버전체목록--");
-			cmd = new SearchCommand(request);
-			cmd = new CountCommand(request);
-			break;
+
 
 			//reference v
 		default:

@@ -25,53 +25,25 @@ public class SearchCommand extends Command {
 	}
 	@Override
 	public void execute() {
-
-		System.out.println("--리스트 진입--");
+	switch(Domain.valueOf(domain.toUpperCase())) {
+		case ADMIN :
+		System.out.println("1.");
+		Map<String, Object> param = new HashMap<>();
 		String pageIndex = request.getParameter("pageIndex");
 		PageProxy pxy = new PageProxy();
-	int pn = (pageIndex==null)?1: Integer.parseInt(pageIndex);
+	int pn = (pageIndex==null)?
+			1 : Integer.parseInt(pageIndex);
 	pxy.carryOut(pn);
 	Pagination page = pxy.getPagination();
-//		int count=MemberServiceImpl.getInstance().countMember();
-//		System.out.println("count :" + count);
-//		int beginPage = 1;
-//		int endPage = 0;
-//		int pageSize = 5;
-//		int blockSize = 5;
-//		int pageCount=(count%pageSize==0)?
-//				count/pageSize:count/pageSize+1;
-//		
-//
-//		if(count / pageSize>pageSize+1) {
-//			if(count%5==0) {
-//				endPage=count/pageSize;
-//						
-//						;}
-//				else {
-//				endPage=count/pageSize+1;
-//;}
-//		}else{
-//			endPage=blockSize;
-//		};	
-//
-////		boolean existPrev = false;
-////		if(prevBlock>=0) {
-////			existPrev =true;
-////		}
-////		boolean existnext=false;
-////		if(nextBlock<=pagecCount) {
-////			existnext=true;
-////		}
-		Map<String, Object> param = new HashMap<>();
-		System.out.println("beginRow" + page.getBeginRow());
-		System.out.println("endRow" + page.getEndRow());
 		param.put("beginRow", String.valueOf(page.getBeginRow()));
 		param.put("endRow", String.valueOf(page.getEndRow()));
-		switch(Domain.valueOf(domain.toUpperCase())) {
-		case ADMIN : 
-		request.setAttribute("list", MemberServiceImpl.getInstance().search(param));
+		System.out.println(pxy.getPagination().getPageIndex());
+		System.out.println("2. beginRow" + page.getBeginRow());
+		System.out.println("3. endRow" + page.getEndRow());
 		request.setAttribute("page", page);
-
+		request.setAttribute("list", MemberServiceImpl.getInstance().search(param));
+		
+		
 
 
 		break;
