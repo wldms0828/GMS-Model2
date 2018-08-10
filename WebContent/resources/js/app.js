@@ -73,6 +73,27 @@ var common=(()=>{
 			}else{
 				alert('관리자만 접근 가능합니다.');
 			}
+			document.getElementById('moveLoginForm').addEventListener('click',function(){ //콜백함수
+				alert('로그인 클릭 이벤트 체크!'+'${ctx}');
+				router.move({ctx : '${ctx}',
+					domain : 'member', 
+					action : 'move',
+					page : 'login'});
+			});	
+			document.getElementById('moveJoinForm').addEventListener('click',function(){
+				alert('조인 클릭 이벤트 체크');
+				router.move({ctx : '${ctx}',
+					domain : 'member', 
+					action : 'move',
+					page : 'add'});
+			});
+			document.getElementById('movedeleteForm').addEventListener('click',function(){
+				router.move({ctx : '${ctx}',
+					domain : 'member', 
+					action : 'move',
+					page : 'deleteForm'});
+			})
+				
 		}
 	};
 })();
@@ -100,7 +121,7 @@ var admin =(()=>{
 	 			x+'/admin.do?action=retrieve&page=memberDetail&USERID='+ document.getElementById('search').value
 
 	 		:
-	 			x+'/admin.do?action=searchbyname&page=main&searchOption='+ document.getElementById('searchOption').value+'&search='+ document.getElementById('search').value;
+	 			x+'/admin.do?action=search&page=main&searchOption='+ document.getElementById('searchOption').value+'&search='+ document.getElementById('search').value;
 	 	});
 //	 	var x = document.querySelectorAll('.username');
 	 	for(var i of document.querySelectorAll('.username')){
@@ -122,19 +143,10 @@ var admin =(()=>{
 	 				i, 'cursor fontColor');
 			i.addEventListener('click',function(){
 				location.href=
-					x+"/admin.do?action=memberlist&page=main&pageIndex="+this.getAttribute('id');
+					x+"/admin.do?action=search&page=main&pageIndex="+this.getAttribute('id');
 			});
 		}
-		document.getElementById('prevBlock').addEventListener('click',()=>{
-			alert('existNext'+existNext);
-//			location.href=
-//				x+"/admin.do?action=memberlist&page=main&pageIndex="+"";
-		});
-		document.getElementById('nextBlock').addEventListener('click',()=>{
-			alert('nextBlock'+nextBlock);
-//			location.href=
-//				x+"/admin.do?action=memberlist&page=main&pageIndex="+"";
-		})
+
 
 		}	
 };})();

@@ -38,12 +38,14 @@
 		</c:forEach>
 
 		<tr>
-			<td colspan="6">전체회원수 : ${page.count} <!-- 		list commander에 담아서 count command에서 리턴해준다. -->
+			<td colspan="6">
+				전체회원수 : ${page.count}
+				<!-- 		list commander에 담아서 count command에서 리턴해준다. -->
 				<%-- 		<c:forEach begin="1" end="${count}" step="1" var ="member1"> --%>
 				<ul class="pagebox">
 					<c:choose>
 							<c:when test="${page.existPrev}">
-					         	<li id="prevBlock" class="pageNum">◀이전</li>
+					         	<li id="${page.prevBlock}" class="pageNum">◀이전</li>
 					         </c:when>
 							<c:otherwise>
 							</c:otherwise>
@@ -55,7 +57,7 @@
 					</c:forEach>
 					<c:choose>
 						<c:when test="${page.existNext}">
-				         	<li id="nextBlock" class="pageNum">다음▶</li>
+				         	<li id="${page.nextBlock}" class="pageNum">다음▶</li>
 				         </c:when>
 						<c:otherwise>
 						</c:otherwise>
@@ -70,52 +72,5 @@
 </div>
 <script>
 	admin.main('${ctx}');
-	//list는 페이지 들어가자 마자 목록이 떠야하기 때문에 click없이 해야됌
-	//app.js로 이동
-	// 	document.getElementById('contentBoxMeta').className='bgColorIs ';
-	// 	document.getElementById('contentBoxTab').className='marginAuto';
-	// 	document.getElementById('contentBoxTab').className='width80';
-	// 	document.getElementById('contentBoxTab').className='height100px';
-	// 	document.getElementById('content-box-search').className='width90';
-	// 	document.getElementById('content-box-search').className='marginAuto';
-	// service.addClass(
-	// 		document.getElementById('contentBoxMeta'),'bgColorIs '
-	// );
-	// service.addClass(
-	// 		document.getElementById('contentBoxTab'),'marginAuto width80 height100px'
-	// );
-	// service.addClass(
-	// 		document.getElementById('content-box-search'),'width90 marginAuto'
-	// );
 
-	// // 	자바스크립트의 타입 primitive type과 reference type 으로 나뉜다. 객체지향 언어는 type이 크게 두개로 나뉜다.
-	// //	var x = document.getElementById('aaa'); 이것은 객체이고
-	// //  var x = document.querySelectAll('.username');은 class를 던졌기 때문에  Array이다.
-	// 	document.getElementById('searchBtn').addEventListener('click',function(){
-	// // 		if(){
-	// // 			location.href = '${ctx}/admin.do?action=retrieve&page=memberDetail&USERID'+;
-	// // 		}else{
-	// // 			location.href = '${ctx}/admin.do?action=searchbyname&page=main&searchOption='+'&searchOption';
-	// // 		} // 삼항으로 변환한 것이 아래의 형태로 됌
-
-	// 		location.href =
-	// 		(document.getElementById('searchOption').value==='USERID')?
-	// 		'${ctx}/admin.do?action=retrieve&page=memberDetail&USERID='+ document.getElementById('search').value
-
-	// 		:
-	// 		'${ctx}/admin.do?action=searchbyname&page=memberDetail&searchOption='+ document.getElementById('search').value +'&searchOption'+ document.getElementById('search').value ;
-	// 	});
-	// 	var x = document.querySelectorAll('.username');
-	// 	for(i in x){
-	// 		x[i].className='fontColor';
-	// 		x[i].className='cursor';
-	// 		x[i].addEventListener('click',function(){
-	// 			alert('클릭'+this.getAttribute('id'));
-	// 			location.href = 
-	// 				"${ctx}/admin.do?action=retrieve&page=memberDetail&USERID="+this.getAttribute('id');
-
-	// 			//자바에서의 this는 필드값이고,
-	// 			//addEventListener(콜백함수)에서 내부에서 this는 최초에 호출되는 객체(x[i]) 하나 이다.
-	// 		})
-	// 	}
 </script>

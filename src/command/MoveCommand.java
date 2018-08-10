@@ -10,5 +10,11 @@ public class MoveCommand extends Command{
 		setPage(request.getParameter("page"));
 		execute();
 	}
+	@Override
+	public void execute() {
+	
+		request.setAttribute("pagename", request.getParameter("page"));
+		super.execute();
+	}
 	
 }

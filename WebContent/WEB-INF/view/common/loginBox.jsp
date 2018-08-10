@@ -8,30 +8,3 @@
 	
 </div>
 
-<!-- <script>
-	var common = new common();
-	common.move();
-</script> -->
-<script>
-	document.getElementById('moveLoginForm').addEventListener('click',function(){ //콜백함수
-		alert('로그인 클릭 이벤트 체크!'+'${ctx}');
-		router.move({ctx : '${ctx}',
-			domain : 'member', 
-			action : 'move',
-			page : 'user_login_form'});
-	});	
-	document.getElementById('moveJoinForm').addEventListener('click',function(){
-		alert('조인 클릭 이벤트 체크');
-		router.move({ctx : '${ctx}',
-			domain : 'member', 
-			action : 'move',
-			page : 'joinForm'});
-	});
-	document.getElementById('movedeleteForm').addEventListener('click',function(){
-		router.move({ctx : '${ctx}',
-			domain : 'member', 
-			action : 'move',
-			page : 'deleteForm'});
-	})
-		
-</script>

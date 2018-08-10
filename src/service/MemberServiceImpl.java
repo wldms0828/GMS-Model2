@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
-		System.out.println("4.serviceImpl List");
+
 		return MemberDAOImpl.getInstance().selectSome(param);
 	}
 	@Override

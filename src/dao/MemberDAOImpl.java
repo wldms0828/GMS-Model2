@@ -9,13 +9,17 @@ import enums.MemberQuery;
 import enums.Vendor;
 import factory.*;
 import pool.*;
+import template.CountQuery;
 import template.PstmtQuery;
 import template.QueryTemplate;
+import template.RetriveQuery;
+import template.SearchQuery;
 
 public class MemberDAOImpl implements MemberDAO {
 	private static MemberDAO instance = new MemberDAOImpl();
 	public static MemberDAO getInstance() {return instance;}
 	private MemberDAOImpl() {}
+	private QueryTemplate q = null;
 	@Override
 	public void insert(MemberBean member) {
 		// TODO Auto-generated method stub
@@ -23,38 +27,29 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
-		QueryTemplate q = new PstmtQuery();
+		q = new SearchQuery();
 		List<MemberBean> list=new ArrayList<>(); 
-		HashMap<String, Object> map = new HashMap<>();
-		String beginRow = (String) param.get("beginRow");
-		System.out.println("5. DAO : " +beginRow );
-		String endRow = (String) param.get("endRow");
-		System.out.println("6. DAO : " +endRow);	
-		String sql = MemberQuery.SEARCH.toString();
-		map.put("beginRow", beginRow);
-		map.put("endRow", endRow);
-/*
- * 
- * map.put("query", MemberQuery.LIST);
-		map.put("column", null);
-		map.put("value", null);
-		map.put("table", Domain.MEMBER);		
-		map.put("query",MemberQuery.SEARCH );*/
-		q.play(map);
+		q.play(param);
 		for(Object s:q.getList()) {
 			list.add((MemberBean) s);
 		}
+		System.out.println("DAO list" + list);
 		return list;
 	}
 	@Override
 	public MemberBean selectOne(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		q=new RetriveQuery();
+		MemberBean mem = new MemberBean();
+		Map<String, Object> map = new HashMap<>();
+		map.put("USERID", id);
+		q.play(map);
+		return mem;
 	}
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		q = new CountQuery();
+		q.play();
+		return q.getNumber();
 	}
 	@Override
 	public void update(Map<?, ?> param) {

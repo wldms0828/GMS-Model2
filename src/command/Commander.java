@@ -20,7 +20,7 @@ public class Commander {
 		case SEARCH : 
 			System.out.println("--멤버전체목록--");
 			cmd = new SearchCommand(request);
-			cmd = new CountCommand(request);
+
 			break;
 		case RETRIEVE : 
 			System.out.println("--아이디검색--");
