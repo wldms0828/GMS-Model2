@@ -1,7 +1,9 @@
 package template;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import domain.MemberBean;
 import enums.MemberQuery;
 import factory.DatabaseFactory;
 
@@ -29,7 +31,20 @@ public class RetriveQuery extends  QueryTemplate{
 
 	@Override
 	void endPlay() {
-		// TODO Auto-generated method stub
+
+		try {
+			ResultSet rs;
+			rs = pstmt.executeQuery();
+			MemberBean mem=null;
+			while(rs.next()) {
+				mem=new MemberBean();
+				mem.setUserId(rs.getString("USERID"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 

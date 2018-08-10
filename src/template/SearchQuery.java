@@ -26,7 +26,7 @@ public class SearchQuery extends QueryTemplate {
 						.createDatabase2(map)
 						.getConnection()
 						.prepareStatement((String) map.get("sql"));
-			System.out.println("10.colum : "+map.get("column"));
+			System.out.println("10.column : "+map.get("column"));
 			int j=0;
 			if(map.containsKey("column")) {
 				System.out.println("11. map contain 내부");

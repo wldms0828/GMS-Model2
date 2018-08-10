@@ -52,7 +52,7 @@ public enum MemberQuery {
 			break;
 		
 		case RETRIEVE : 
-			query = "SELECT"
+			query = "SELECT	"
 					+ ColumnFinder.find(Domain.MEMBER)
 					+"	FROM MEMBER "
 					+"	WHERE USERID"

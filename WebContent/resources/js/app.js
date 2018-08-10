@@ -59,7 +59,9 @@ var service = (()=>{
 var common=(()=>{
 	return {
 		main : x=>{
-			var isAdmin = confirm('관리자입니까');
+			document.getElementById('moveToAdminMain')
+			.addEventListener('click',function(){			
+				var isAdmin = confirm('관리자입니까');
 			if(isAdmin){
 				var password = prompt('관리자 비밀번호 입력 바랍니다.');
 				if(password==1){
@@ -72,7 +74,8 @@ var common=(()=>{
 				}
 			}else{
 				alert('관리자만 접근 가능합니다.');
-			}
+			}});
+
 			document.getElementById('moveLoginForm').addEventListener('click',function(){ //콜백함수
 				alert('로그인 클릭 이벤트 체크!'+'${ctx}');
 				router.move({ctx : '${ctx}',
