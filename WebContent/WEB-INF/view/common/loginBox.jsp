@@ -5,6 +5,4 @@
 	<a id="moveLoginForm" >LOGIN</a>
 	&nbsp;&nbsp;&nbsp; 
 	<a id="moveJoinForm" >JOIN</a><br />
-	
 </div>
-

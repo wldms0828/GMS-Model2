@@ -34,27 +34,7 @@ var service = (()=>{
 			}
 		}		
 	}
-	
-//	return {
-//		joinValidation : x=>{
-//			if(x.getUserId()===""){
-//				alert("아이디를 입력하세요.");
-//				return false;
-//			}else if(x.getPassword()===""){
-//				alert("비밀번호를 입력하세요.");
-//				return false;
-//			}else if(x.getName()===""){
-//				alert("이름을 입력하세요.");
-//				return false;
-//			}else if(x.getSsn()===""){
-//				alert("나이를 입력하세요.");
-//				return false;
-//			}else{
-//				return true;
-//			}
-//			return false;
-//		} 		
-//	};
+
 })();
 var common=(()=>{
 	return {
@@ -77,15 +57,15 @@ var common=(()=>{
 			}});
 
 			document.getElementById('moveLoginForm').addEventListener('click',function(){ //콜백함수
-				alert('로그인 클릭 이벤트 체크!'+'${ctx}');
-				router.move({ctx : '${ctx}',
+				alert('로그인 클릭 이벤트 체크!'+x);
+				router.move({ctx :x,
 					domain : 'member', 
 					action : 'move',
 					page : 'login'});
 			});	
 			document.getElementById('moveJoinForm').addEventListener('click',function(){
 				alert('조인 클릭 이벤트 체크');
-				router.move({ctx : '${ctx}',
+				router.move({ctx : x,
 					domain : 'member', 
 					action : 'move',
 					page : 'add'});
@@ -135,7 +115,7 @@ var admin =(()=>{
 	 		i.addEventListener('click',function(){
 	 			alert('클릭'+this.getAttribute('id'));
 	 			location.href = 
-	 				x+"/admin.do?action=retrieve&page=memberDetail&USERID="+this.getAttribute('id');
+	 				x+"/member.do?action=retrieve&page=retrieve&USERID="+this.getAttribute('id');
 				
 //
 	 		});

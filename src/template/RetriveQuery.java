@@ -39,6 +39,12 @@ public class RetriveQuery extends  QueryTemplate{
 			while(rs.next()) {
 				mem=new MemberBean();
 				mem.setUserId(rs.getString("USERID"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setName(rs.getString("NAME"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setTeamId(rs.getString("TEAMID"));
+				o=mem;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

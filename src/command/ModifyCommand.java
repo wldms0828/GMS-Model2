@@ -14,7 +14,6 @@ public class ModifyCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-
 		execute();
 	}
 	@Override

@@ -9,28 +9,29 @@
 
 	<div id="wrapper"></div>
 	<div id="header">
-
+		<jsp:include page="../common/head.jsp"/>
 	</div>
 
-	<!-- 		header end -->
 	<div id="content" >
-	이동페이지 : ${pagename }
+	이동페이지 : ${pagename}
 		<c:choose>
 			<c:when test="${pagename  eq 'add'}">
-				<jsp:include page="add.jsp">
+				<jsp:include page="add.jsp"/>
 			</c:when>
 			<c:when test="${pagename  eq 'login'}">
-				<jsp:include page="login.jsp">
+				<jsp:include page="login.jsp"/>
 			</c:when>
 			<c:when test="${pagename  eq 'search'}">
-				<jsp:include page="login.jsp">
+				<jsp:include page="search.jsp"/>
+			</c:when>
+			<c:when test="${pagename  eq 'modify'}">
+				<jsp:include page="modify.jsp"/>
 			</c:when>
 			<c:otherwise>
-				<jsp:include page="retrieve.jsp">
+				<jsp:include page="retrieve.jsp"/>
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<!-- 		content end -->
 	<div id="footer"></div>
 
 <script>

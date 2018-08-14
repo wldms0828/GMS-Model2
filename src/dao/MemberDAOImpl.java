@@ -3,13 +3,16 @@ package dao;
 import java.sql.*;
 import java.util.*;
 
+import command.AddCommand;
 import domain.MemberBean;
 import enums.Domain;
 import enums.MemberQuery;
 import enums.Vendor;
 import factory.*;
 import pool.*;
+import template.AddQuery;
 import template.CountQuery;
+import template.LoginQuery;
 import template.PstmtQuery;
 import template.QueryTemplate;
 import template.RetriveQuery;
@@ -22,8 +25,18 @@ public class MemberDAOImpl implements MemberDAO {
 	private QueryTemplate q = null;
 	@Override
 	public void insert(MemberBean member) {
-		// TODO Auto-generated method stub
-		
+		q=new AddQuery();
+		Map<String, Object> map = new HashMap<>();
+		map.put("USERID", member.getUserId());
+		map.put("PASSWORD", member.getPassword());
+		map.put("NAME", member.getName());
+		map.put("AGE", member.getAge());
+		map.put("GENDER", member.getGender());
+		map.put("ROLL", member.getRoll());
+		map.put("SSN", member.getSsn());
+		map.put("TEAMID", member.getTeamId());
+		q.play(map);
+
 	}
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
@@ -39,11 +52,10 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberBean selectOne(String id) {
 		q=new RetriveQuery();
-		MemberBean mem = new MemberBean();
 		Map<String, Object> map = new HashMap<>();
 		map.put("USERID", id);
 		q.play(map);
-		return mem;
+		return (MemberBean) q.getO();
 	}
 	@Override
 	public int count() {
@@ -63,8 +75,13 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public MemberBean login(MemberBean member) {
-		MemberBean mem = new MemberBean();
-		return mem;
+		q= new LoginQuery();
+		Map<String, Object> map = new HashMap<>();
+		map.put("USERID", member.getUserId());
+		map.put("PASSWORD", member.getPassword());
+		q.play(map);
+		
+		return (MemberBean) q.getO();
 	}
 
 	

@@ -20,7 +20,6 @@ public class Commander {
 		case SEARCH : 
 			System.out.println("--멤버전체목록--");
 			cmd = new SearchCommand(request);
-
 			break;
 		case RETRIEVE : 
 			System.out.println("--아이디검색--");
@@ -38,7 +37,10 @@ public class Commander {
 			System.out.println("--로그인--");
 			cmd = new LoginCommand(request);
 			break;
-
+		case FILEUPLOAD :
+			System.out.println("---무브진입---");
+			cmd = new MoveCommand(request);
+			break;
 
 			//reference v
 		default:

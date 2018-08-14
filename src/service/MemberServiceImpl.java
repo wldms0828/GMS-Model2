@@ -29,18 +29,23 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void modify(Map<?, ?> param) {
 		MemberDAOImpl.getInstance().update(param);
-		
 	}
 	@Override
 	public void remove(MemberBean member) {
-		MemberDAOImpl.getInstance().delete(member);
-		
+		MemberDAOImpl.getInstance().delete(member);		
 	}
 
 
 	@Override
 	public boolean login(MemberBean member) {
-		return false;
+		boolean flag = false;
+		if(MemberDAOImpl.getInstance().login(member)==null) {
+			flag = false;
+		}else {
+			flag = true;
+		}
+		
+		return flag;
 	}
 
 	

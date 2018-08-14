@@ -26,6 +26,7 @@ public class SearchCommand extends Command {
 	public void execute() {
 	switch(Domain.valueOf(domain.toUpperCase())) {
 		case ADMIN :
+			request.setAttribute("pagename", request.getParameter("page"));
 		System.out.println("1.SearchCommand Enter");
 		Map<String, Object> param = new HashMap<>();
 		String pageIndex = request.getParameter("pageIndex");

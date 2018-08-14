@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!doctype html>
-<html lang="en">
-<jsp:include page="../common/head.jsp" />
-<body>
+<div id="content-box">
 	<form id="updateForm" name="updateForm" action="${ctx}/member.do">
 <table id ="mypage">
   <tr>
@@ -56,42 +53,15 @@
 <!-- <input type="hidden" name="page" value="mypage" /> -->
 	</form>
 	
-	<script>
-	
-	
-	var team = document.getElementById('teamid');
-	var roll = document.getElementById('ROLL');
-	for(var i = 0;i<roll.options.length;i++){
-		//alert(roll.options[i].value+'과 같다');
-		if(roll.options[i].value==='${user.roll}'){
-			roll.options[i].setAttribute("selected","selected");}
-		}	
-	for(var i=0;i<5;i++){
-		if(document.getElementById('teamid_'+i).value==='${user.teamId}'){
-			document.getElementById('teamid_'+i).checked=true;
-		}	
+	</div>
+<form method="POST" enctype="multipart/form-data" 
+action="${ctx}/member.do?action=fileupload&page=retrieve">
+  파일업로드: <input type="file" name="upfile"><br/>
+  <br/>
+  <input type="submit" value="파일업로드">
+  <input type="hidden" name="action" value="fileupload"/>
+  <input type="hidden" name="page" value="retrieve" />
+</form>	
 
-	};
-	document.getElementById('updateConfirmBtn')
-	.addEventListener('click',function(){
-	var x = service.nullChecker([document.updateForm.PASSWORD.value]);
-	if(x.checker){
-		var form = document.getElementById('updateForm');	
-		form.action = "${ctx}/member.do";
-		form.method = "post";
-		var node = document.createElement('input');
-		node.innerHTML=
-			'<input type="hidden" name="action" value="updatemember"/>'
-			form.appendChild(node);
-		form.submit();
-
-	}else{
-		alert(x.text);}
-		alert('"변경완료" 버튼 클릭함!');});
-
-
-</script>
-</body>
-</html>
 
 

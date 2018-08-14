@@ -11,13 +11,13 @@ public class RemoveCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-
 		execute();
 	}
 	@Override
 	public void execute() {
 		switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
+			request.setAttribute("pagename", request.getParameter("page"));
 			System.out.println("회원탈퇴입장");
 			MemberBean mem4 = new MemberBean();
 			mem4.setUserId(((MemberBean) request.getSession().getAttribute("user")).getUserId());

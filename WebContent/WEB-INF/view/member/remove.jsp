@@ -2,11 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<!doctype html>
-<html lang="en">
-<jsp:include page="../common/head.jsp" />
-<body id = "user-login-layout">
-
+<div id="content-box">
 	<div id="header">
 		<jsp:include page="../common/titleBox.jsp" />
 		<jsp:include page="../common/loginBox.jsp" />
@@ -33,7 +29,8 @@
 	<!-- 		content end -->
 	<div id="footer">
 	<jsp:include page="../common/footerBox.jsp" />
-	</div>
+	</div>	
+</div>
 	<script>
 	document.getElementById('deleteConfirmBtn').addEventListener('click',function(){
 		var form = document.getElementById('deleteForm');	

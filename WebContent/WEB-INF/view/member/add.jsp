@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-  
-<!--  userId, ssn, name, roll, teamId,password; -->
-<!doctype html>
-<html lang="en">
-<jsp:include page="../common/head.jsp" />
-<body id = "background">
+<div id="content-box">
 	<form id="joinForm" name="joinForm" >
 	
 	NAME : <br />
@@ -55,32 +50,14 @@
 	<input id="joinFormBtn" type="button" value="전 송" />
 	
 	</form>
+		</div>
 	<script>
-// 		document.getElementById('joinFormBtn').addEventListener('click',function(){
-// 			Member member = new Member();
-// 			var form = document.getElementById('joinForm');
-// 			form.action = "${ctx}/member.do";
-// 			form.method = "post";
-// 			var NAME = form.NAME.value;
-// 			var SSN = form.SSN.value;
-// 			var USERID = form.USERID.value;
-// 			var PASSWORD = form.PASSWORD.value;
-// 			member.setName(NAME);
-// 			member.setSsn(SSN);
-// 			member.setUserId(USERID);
-// 			member.setPassword(PASSWORD);
-// 			if(service.joinValidation(member)){
-// 				form.submit();
-// 			}
-			
-// 		});
 
 
 
- 		document.getElementById('joinFormBtn')
+document.getElementById('joinFormBtn')
  		.addEventListener('click',function(){
-// 			//var member = new Member();
-// 			//var form = document.getElementById('user_login_form');	
+
  			var form = document.getElementById('joinForm');	
  			var x = service.nullChecker([document.joinForm.USERID.value
  				,document.joinForm.PASSWORD.value		
@@ -91,8 +68,8 @@
  				var arr = [
  	 				{name:'GENDER', value:member.getGender()},
  	 				{name:'AGE', value:member.getAge()},
- 					{name:'action',value:'join'},
- 					{name:'page',value:'user_login_form'}
+ 					{name:'action',value:'add'},
+ 					{name:'page',value:'login'}
  					];
  				
  	 			for(var i in arr){
@@ -102,7 +79,6 @@
  	  				node.setAttribute('value',arr[i].value);
  					form.appendChild(node);
  				}
- 	 			//input tag를 만든것 
  	 			form.action = "${ctx}/member.do";
  				form.method = "post";	
 				form.submit();
@@ -110,36 +86,5 @@
  	 				alert(x.text);}
  	   		
  	 			});
-//				var node = document.createElement('input');
-//				node.innerHTML=
-//  				'<input type="hidden" name="action" value="join"/>';
-// 				node.setAttribute('type','hidden');
-// 				node.setAttribute('name','action');
-// 				node.setAttribute('value','join');
-// 				form.appendChild(node);
-// 				var node1 = document.createElement('input');
-//  				node.innerHTML=
-//  					'<input type="hidden" name="GENDER"/>';
-// 				node1.setAttribute('type','hidden');
-// 				node1.setAttribute('name','GENDER');
-// 				form.appendChild(node1);
-// 				var node2 = document.createElement('input');
-//  			node.innerHTML=
-//  				'<input type="hidden" name="AGE"/>';
-// 				node2.setAttribute('type','hidden');
-// 				node2.setAttribute('name','AGE');
-// 				form.appendChild(node2);
-//              배열 				
-//  			var arr = ['action','GENDER','AGE'];
-// 			var arr1 =['join'];
-//  			for(var i=0;i<arr.length;i++){
-// 			node.setAttribute('type','hidden');
-//  				node.setAttribute('name',arr[i]);
-//  				node.setAttribute('value',arr1[i]);
-// 				form.appendChild(node);
-			
-		
-		//할당 하는건 아주 나쁜 코딩이다 나중엔 할당도 하지 않고 등호나 연산기호 역시 사용하지 않을것이다.
+
 	</script>
-</body>
-</html>
