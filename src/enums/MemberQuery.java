@@ -67,9 +67,15 @@ public enum MemberQuery {
 					"	WHERE T.SEQ BETWEEN ? AND ?";
 			break;
 		case LOGIN:
-			query = " SELECT  " +
-						ColumnFinder.find(Domain.MEMBER)
-						+ "FROM MEMBER "
+			query = " SELECT USERID,  " 
+							+ " TEAMID , "
+							+ " AGE, "
+							+ " GENDER, "
+							+ " NAME, "
+							+ " PASSWORD, "
+							+ " ROLL,"
+							+ " SSN"
+						+ "	FROM MEMBER "
 						+ " WHERE USERID LIKE ? " 
 						+ " AND PASSWORD LIKE ? ";
 			break;

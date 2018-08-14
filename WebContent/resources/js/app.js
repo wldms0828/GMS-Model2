@@ -70,12 +70,15 @@ var common=(()=>{
 					action : 'move',
 					page : 'add'});
 			});
-			document.getElementById('movedeleteForm').addEventListener('click',function(){
-				router.move({ctx : '${ctx}',
-					domain : 'member', 
-					action : 'move',
-					page : 'deleteForm'});
-			})
+			if(document.getElementById('movedeleteForm')!=null){
+				document.getElementById('movedeleteForm').addEventListener('click',function(){
+					router.move({ctx : '${ctx}',
+						domain : 'member', 
+						action : 'move',
+						page : 'deleteForm'});
+				})
+			}
+
 				
 		}
 	};
@@ -184,7 +187,40 @@ var member = (()=>{
 
 			member.setAge(x);
 			member.setGender(x);
-		}			
+		},
+		main : x=>{
+			if(document.getElementById('loginFormBtn')!=null){
+				document.getElementById('loginFormBtn').addEventListener('click',function(){
+					
+					var y = service.nullChecker(
+							[document.user_login_form.USERID.value
+						,document.user_login_form.PASSWORD.value]);
+					if(y.checker){
+						var form = document.getElementById('user_login_form');	
+						form.action = x+"/member.do";
+						form.method = "post";
+						
+						var node = document.createElement('input');
+					
+						node.innerHTML=
+							'<input type = "hidden" name="action" value="login"/>';
+							form.appendChild(node);
+							
+//						var node1 = document.createElement('input');
+//						node1.innerHTML=
+//			 				'<input type = "hidden" name="page" value="retrieve"/>';
+//							form.appendChild(node1);
+						form.submit();
+					}else{
+						alert(y.text);
+					}	
+					
+				
+					
+				});
+			}
+			
+		}
 		
 	};
 })();

@@ -23,15 +23,20 @@ public class LoginCommand extends Command{
 			mem5.setPassword(request.getParameter("PASSWORD"));
 			
 			if(MemberServiceImpl.getInstance().login(mem5)) {
-				request.setAttribute("match", "TRUE");
-				request.getSession().setAttribute("user",
+
+				request.getSession().setAttribute("member",
 						MemberServiceImpl.getInstance().retrive(request.getParameter("USERID")));
-				System.out.println("로그인성공");
-		
+				
+				request.setAttribute("match", "TRUE");
+				System.out.println("로그인성공");	
+
 			}else {
 				request.setAttribute("match", "FALSE");
 				System.out.println("로그인실패");
 			}
+			request.setAttribute("pagename","retrieve" );
+			
+			
 			System.out.println("--로그인페이지 끝--");
 			break;
 

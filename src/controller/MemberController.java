@@ -7,6 +7,7 @@ import domain.*;
 import enums.Action;
 import enums.Term;
 import pool.DBConstant;
+import service.ImageServiceImpl;
 
 import java.util.*;
 import javax.servlet.ServletException;
@@ -78,7 +79,7 @@ public class MemberController extends HttpServlet {
 								file=new File(Term.UPLOADPATH+fileName);
 								item.write(file);
 								System.out.println("======[7]=====파일업로드 성공");
-								//IMAGE 
+								ImageServiceImpl.getInstance().create(fileName);
 							}else {
 								System.out.println("======[8]=====파일업로드 실패");
 							}
@@ -96,19 +97,19 @@ public class MemberController extends HttpServlet {
 		case MOVE :
 			System.out.println("MOVE");
 			Carrier.forward(request, response);
-			//request.getRequestDispatcher("/WEB-INF/view/member/" + page + ".jsp").forward(request, response);
-		// DB접근하지 않아도 될 case와
+
 		break;
 
 		case LOGIN:
 			System.out.println("--LOGIN--");
 			if(request.getAttribute("match").equals("TRUE")){
-				System.out.println(request.getAttribute("user"));
-
+				System.out.println("!!!! 멤버컨트롤러 로그인 !!!!");
+				System.out.println(
+						request.getSession().getAttribute("user"));
 				Carrier.forward(request, response);
 
 				}else {
-				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
+				Carrier.redirect(request, response, "/member.do?action=move&page=login");
 			}
 			break;
 		default : 

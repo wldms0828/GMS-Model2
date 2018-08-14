@@ -13,19 +13,22 @@ public class LoginQuery extends QueryTemplate {
 	@Override
 	void initialize() {
 		System.out.println(" LoginQuery ");
-		map.put("sql", MemberQuery.LOGIN.toString());		
+		map.put("sql", MemberQuery.LOGIN.toString());
+		System.out.println("sql : "+ MemberQuery.LOGIN.toString());
 	}
 
 	@Override
 	void startPlay() {
-		System.out.println(" LoginQuery+ startPlay() ");
+		System.out.println(" LoginQuery + startPlay() ");
 		try {
 			pstmt=DatabaseFactory
 					.createDatabase2(map)
 					.getConnection()
 					.prepareStatement((String) map.get("sql"));
 			pstmt.setString(1,map.get("USERID").toString());
-			pstmt.setString(2, map.get("PASSWORD").toString());
+			pstmt.setString(2,map.get("PASSWORD").toString());
+			System.out.println(map.get("USERID").toString());
+			System.out.println(map.get("PASSWORD").toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -36,14 +39,17 @@ public class LoginQuery extends QueryTemplate {
 		try {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				((MemberBean) o).setUserId(rs.getString("USERID"));
-				((MemberBean) o).setTeamId(rs.getString("TEAMID"));
-				((MemberBean) o).setAge(rs.getString("AGE"));
-				((MemberBean) o).setGender(rs.getString("GENDER"));
-				((MemberBean) o).setName(rs.getString("NAME"));
-				((MemberBean) o).setPassword(rs.getString("PASSWORD"));
-				((MemberBean) o).setRoll(rs.getString("ROLL"));
-				((MemberBean) o).setSsn(rs.getString("SSN"));
+				MemberBean mem = new MemberBean();
+				mem.setUserId(rs.getString("USERID"));
+				mem.setTeamId(rs.getString("TEAMID"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setName(rs.getString("NAME"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setSsn(rs.getString("SSN"));
+				o=mem;
+				System.out.println("endPlay() : " + o);
 			}
 		} catch (Exception e) {
 

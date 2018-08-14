@@ -8,6 +8,7 @@ import enums.*;
 public class Commander {
 	public static Command order(HttpServletRequest request,HttpServletResponse response) {
 		Command cmd = null; // reference 변수
+		System.out.println("action"+request.getParameter("action"));
 		switch (Action.valueOf(request.getParameter("action").toUpperCase())) {
 		case MOVE :
 			System.out.println("---무브진입---");

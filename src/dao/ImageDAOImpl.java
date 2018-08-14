@@ -3,6 +3,7 @@ package dao;
 import java.util.Map;
 
 import domain.ImageBean;
+import template.AddQuery;
 
 public class ImageDAOImpl implements ImageDAO {
 	private static ImageDAO instance = new ImageDAOImpl();
@@ -10,27 +11,23 @@ public class ImageDAOImpl implements ImageDAO {
 	private ImageDAOImpl() {}
 
 	@Override
-	public void insert(ImageBean image) {
-		// TODO Auto-generated method stub
-		
+	public void insert(String image) {
+		q=new AddQuery();
 	}
 
 	@Override
-	public ImageBean retrieve(String id) {
-		// TODO Auto-generated method stub
+	public ImageBean retrieve(String id) {		
 		return null;
 	}
 
 	@Override
 	public void update(Map<?, ?> map) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	public void remove(ImageBean image) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 }

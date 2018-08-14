@@ -6,7 +6,7 @@
 <table id ="mypage">
   <tr>
     <td colspan="2" rowspan="3">
-     <img src="${img}/${profile}"></img></td>
+     <img src="${img}/mypage/로그인.PNG"></img></td>
     <td  >ID</td>
     <td colspan="3">${member.userId}</td>
   </tr>

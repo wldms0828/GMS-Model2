@@ -8,10 +8,14 @@ import factory.DatabaseFactory;
 
 public class AddQuery extends QueryTemplate{
 
+	
 	@Override
 	void initialize() {
 		System.out.println(" AddQuery ");
 		map.put("sql", MemberQuery.INSERT.toString());
+		switch(){
+			
+		}
 	}
 
 	@Override

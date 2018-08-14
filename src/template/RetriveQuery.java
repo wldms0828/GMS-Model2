@@ -44,6 +44,8 @@ public class RetriveQuery extends  QueryTemplate{
 				mem.setName(rs.getString("NAME"));
 				mem.setRoll(rs.getString("ROLL"));
 				mem.setTeamId(rs.getString("TEAMID"));
+				mem.setSsn(rs.getString("SSN"));
+				mem.setPassword(rs.getString("PASSWORD"));
 				o=mem;
 			}
 		} catch (SQLException e) {

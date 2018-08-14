@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import domain.MemberBean;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command {
@@ -22,11 +25,10 @@ public class RetrieveCommand extends Command {
 	public void execute() {
 		System.out.println("1. retrieveCommand");
 		request.setAttribute("pagename", request.getParameter("page"));
-		request.setAttribute("member",  MemberServiceImpl.getInstance().retrive(request.getParameter("USERID")));
-		request.setAttribute("user", MemberServiceImpl.getInstance().retrive(request.getParameter("USERID")));
-		String img = "";
-		
-		String imgPath="/upload/19122206_1362190413865352_4304764215186423808_n.jpg";
+		request.setAttribute("member",
+				MemberServiceImpl.getInstance().retrive(((MemberBean)request.getSession().getAttribute("member")).getUserId()));
+		String img = "";		
+		String imgPath="/upload/발랑솔.jpg";
 		request.setAttribute("img",imgPath );
 		System.out.println("--id검색확인--");
 		

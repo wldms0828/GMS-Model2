@@ -55,6 +55,8 @@ public class MemberDAOImpl implements MemberDAO {
 		Map<String, Object> map = new HashMap<>();
 		map.put("USERID", id);
 		q.play(map);
+		System.out.println("++++++++++ MemberBean selectOne ++++++++++++");
+		System.out.println((MemberBean) q.getO());
 		return (MemberBean) q.getO();
 	}
 	@Override

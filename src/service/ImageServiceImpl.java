@@ -2,6 +2,7 @@ package service;
 
 import java.util.Map;
 
+import dao.ImageDAOImpl;
 import dao.MemberDAOImpl;
 import domain.ImageBean;
 
@@ -11,27 +12,23 @@ public class ImageServiceImpl implements ImageService {
 	private ImageServiceImpl() {}
 
 	@Override
-	public void create(ImageBean image) {
-		// TODO Auto-generated method stub
-		
+	public void create(String image) {
+		ImageDAOImpl.getInstance().insert(image);
 	}
 
 	@Override
 	public ImageBean retrieve(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return ImageDAOImpl.getInstance().retrieve(id);
 	}
 
 	@Override
 	public void modify(Map<?, ?> map) {
-		// TODO Auto-generated method stub
-		
+				ImageDAOImpl.getInstance().update(map);
 	}
 
 	@Override
 	public void remove(ImageBean image) {
-		// TODO Auto-generated method stub
-		
+			ImageDAOImpl.getInstance().remove(image);
 	}
 
 	
