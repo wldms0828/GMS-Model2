@@ -70,7 +70,7 @@ class FileName{
 		this.sep=File.separator;
 		this.filename=path.substring(path.lastIndexOf("\\")+1,path.indexOf(".")); //substring()
 		this.ext=path.substring(path.indexOf(".")+1); //substring 과 lastIndexof()
-		
+
 	
 	}
 

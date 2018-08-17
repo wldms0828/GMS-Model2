@@ -49,8 +49,6 @@
   </tr>
 </table>
 <input type="button" id="updateConfirmBtn" value="변경완료"/>
-<!-- <input type="hidden" name="action" value="updatemember"/> -->
-<!-- <input type="hidden" name="page" value="mypage" /> -->
 	</form>
 	
 	</div>
@@ -59,8 +57,6 @@ action="${ctx}/member.do?action=fileupload&page=retrieve">
   파일업로드: <input type="file" name="upfile"><br/>
   <br/>
   <input type="submit" value="파일업로드">
-  <input type="hidden" name="action" value="fileupload"/>
-  <input type="hidden" name="page" value="retrieve" />
 </form>	
 
 

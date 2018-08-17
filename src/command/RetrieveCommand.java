@@ -23,12 +23,13 @@ public class RetrieveCommand extends Command {
 	
 	@Override
 	public void execute() {
+		Map<String , Object> map = new HashMap<>();
 		System.out.println("1. retrieveCommand");
 		request.setAttribute("pagename", request.getParameter("page"));
 		request.setAttribute("member",
 				MemberServiceImpl.getInstance().retrive(((MemberBean)request.getSession().getAttribute("member")).getUserId()));
-		String img = "";		
-		String imgPath="/upload/발랑솔.jpg";
+		String img = (String) map.get("IMGNAME")+(String)map.get("EXTENSION");
+		String imgPath="/upload/"+img;
 		request.setAttribute("img",imgPath );
 		System.out.println("--id검색확인--");
 		

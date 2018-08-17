@@ -12,8 +12,8 @@ public class ImageServiceImpl implements ImageService {
 	private ImageServiceImpl() {}
 
 	@Override
-	public void create(String image) {
-		ImageDAOImpl.getInstance().insert(image);
+	public void create(Map<?, ?> map) {
+		ImageDAOImpl.getInstance().insert(map);
 	}
 
 	@Override

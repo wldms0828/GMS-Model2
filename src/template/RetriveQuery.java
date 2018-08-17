@@ -2,8 +2,11 @@ package template;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import domain.MemberBean;
+import enums.ImageQuery;
 import enums.MemberQuery;
 import factory.DatabaseFactory;
 
@@ -11,47 +14,83 @@ public class RetriveQuery extends  QueryTemplate{
 
 	@Override
 	void initialize() {
-		map.put("sql", MemberQuery.RETRIEVE.toString());
+		switch (String.valueOf(map.get("table"))) {
+			case "MEMBER":
+				map.put("sql", MemberQuery.RETRIEVE.toString());
+					break;
+			case "IMAGE":
+				map.put("sql", ImageQuery.RETRIEVE.toString());
+				break;
+		}
+		
 		
 	}
 
 	@Override
 	void startPlay() {
 		try {
-			pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement((String) map.get("sql"));
-			pstmt.setString(1,(String) map.get("USERID"));
-		} catch (Exception e) {
+		switch (String.valueOf(map.get("table"))) {
+		case "MEMBER":
+
+				pstmt.setString(1,(String) map.get("USERID"));
+			
+			break;
+		case "IMAGE":
+			
+			pstmt.setString(1, (String) map.get("USERID"));
+			
+			break;
+
+
+		default:
+			break;
+		}} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 		
 	}
 
 	@Override
 	void endPlay() {
-
 		try {
-			ResultSet rs;
-			rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 			MemberBean mem=null;
+		switch (String.valueOf(map.get("table"))) {
+
+		case "MEMBER":
+			while(rs.next()) {
+					mem=new MemberBean();
+					mem.setUserId(rs.getString("USERID"));
+					mem.setTeamId(rs.getString("TEAMID"));
+					mem.setAge(rs.getString("AGE"));
+					mem.setGender(rs.getString("GENDER"));
+					mem.setName(rs.getString("NAME"));
+					mem.setPassword(rs.getString("PASSWORD"));
+					mem.setRoll(rs.getString("ROLL"));
+					mem.setSsn(rs.getString("SSN"));
+					o=mem;
+				}
+			
+			break;
+		case "IMAGE":
 			while(rs.next()) {
 				mem=new MemberBean();
+				Map<String, Object> map = new HashMap<>();
 				mem.setUserId(rs.getString("USERID"));
-				mem.setAge(rs.getString("AGE"));
-				mem.setGender(rs.getString("GENDER"));
-				mem.setName(rs.getString("NAME"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setTeamId(rs.getString("TEAMID"));
-				mem.setSsn(rs.getString("SSN"));
-				mem.setPassword(rs.getString("PASSWORD"));
-				o=mem;
+				map.get("IMGNAME");
+				map.get("EXTENSION");
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			break;
+		default:
+			break;
+		}
+		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
+		
 
 		
 	}

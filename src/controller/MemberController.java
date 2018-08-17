@@ -34,7 +34,7 @@ public class MemberController extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("--MemberController()--");
 		Reciever.init(request, response);
-		System.out.println("컨트롤 액션"+request.getParameter("action"));
+		System.out.println("멤버 컨트롤 액션 : "+request.getParameter("action"));
 		System.out.println("액션 : " + Reciever.cmd.getAction());
 		
 		switch (Action.valueOf(Reciever.cmd.getAction().toUpperCase())) {
@@ -68,6 +68,7 @@ public class MemberController extends HttpServlet {
 				System.out.println("======[3]=====try 내부로 진입");
 				File file = null;
 				items = upload.parseRequest(new ServletRequestContext(request));
+				Map<String, Object> map = new HashMap<>();
 				System.out.println("======[4]===== items 생성");
 				Iterator<FileItem> iter = items.iterator();
 						while(iter.hasNext()) {
@@ -76,10 +77,15 @@ public class MemberController extends HttpServlet {
 							if(!item.isFormField()) {
 								System.out.println("======[6]===== if 진입");
 								String fileName = item.getName();
+								System.out.println("fileName : " + fileName);
 								file=new File(Term.UPLOADPATH+fileName);
 								item.write(file);
 								System.out.println("======[7]=====파일업로드 성공");
-								ImageServiceImpl.getInstance().create(fileName);
+								map.put("IMGNAME", fileName.substring(0, fileName.indexOf(".")));
+								map.put("EXTENSION",fileName.substring(fileName.indexOf(".")+1));
+								map.put("USERID", ((MemberBean)request.getSession().getAttribute("member")).getUserId());
+								ImageServiceImpl.getInstance().create(map);
+
 							}else {
 								System.out.println("======[8]=====파일업로드 실패");
 							}

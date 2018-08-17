@@ -22,7 +22,7 @@ public abstract class QueryTemplate {
 	/*뭐든지 다담아서 return 할 때*/
 	HashMap<String, Object>map;
 	PreparedStatement pstmt;
-	public final void play(Map<?, ?>map) {
+	public final void play(Map<?, ?> map) {
 		this.number = 0;
 		this.o=null;
 		this.map=new HashMap<>();
@@ -72,7 +72,7 @@ public abstract class QueryTemplate {
 						.createDatabase2(map)
 						.getConnection()
 						.prepareStatement((String) map.get("sql"));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -52,8 +52,14 @@ public enum MemberQuery {
 			break;
 		
 		case RETRIEVE : 
-			query = "SELECT	"
-					+ ColumnFinder.find(Domain.MEMBER)
+			query = " SELECT USERID,  " 
+					+ " TEAMID , "
+					+ " AGE, "
+					+ " GENDER, "
+					+ " NAME, "
+					+ " PASSWORD, "
+					+ " ROLL,"
+					+ " SSN"
 					+"	FROM MEMBER "
 					+"	WHERE USERID"
 					+"	LIKE ? " ;

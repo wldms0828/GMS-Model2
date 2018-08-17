@@ -35,6 +35,7 @@ public class MemberDAOImpl implements MemberDAO {
 		map.put("ROLL", member.getRoll());
 		map.put("SSN", member.getSsn());
 		map.put("TEAMID", member.getTeamId());
+		map.put("table", "MEMBER");
 		q.play(map);
 
 	}
